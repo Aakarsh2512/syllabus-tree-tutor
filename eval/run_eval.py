@@ -27,7 +27,7 @@ sys.path.insert(0, str(ROOT / "backend"))
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-from app import config, generate, llm     # noqa: E402
+from app import config, generate, llm, retrieve     # noqa: E402
 
 REFUSAL_PATTERNS = ["couldn't find", "could not find", "not in the provided", "no information"]
 
@@ -135,21 +135,39 @@ RUN_SETTINGS = {
 }
 
 
-def run_one(name: str, golden: list[dict], top_k: int) -> dict:
+def retrieval_only(question: str, settings: dict, top_k: int) -> dict:
+    """Retrieve without calling the language model at all."""
+    found = retrieve.search(
+        question,
+        mode=settings["mode"],
+        hybrid=settings["hybrid"],
+        dedupe=settings["dedupe"],
+        top_k=top_k,
+    )
+    return {"hits": found["hits"], "trace": found["trace"], "answer": ""}
+
+
+def run_one(name: str, golden: list[dict], top_k: int, answers: str) -> dict:
     settings = RUN_SETTINGS[name]
-    print("running", name, settings)
+    print("running", name, settings, "| answers:", answers)
     rows = []
     started = time.time()
     for item in golden:
-        result = generate.answer(
-            item["question"],
-            mode=settings["mode"],
-            hybrid=settings["hybrid"],
-            dedupe=settings["dedupe"],
-            top_k=top_k,
+        needs_answer = answers == "all" or (
+            answers == "unanswerable" and item["category"] == "unanswerable"
         )
+        if needs_answer:
+            result = generate.answer(
+                item["question"],
+                mode=settings["mode"],
+                hybrid=settings["hybrid"],
+                dedupe=settings["dedupe"],
+                top_k=top_k,
+            )
+        else:
+            result = retrieval_only(item["question"], settings, top_k)
         rows.append(score_item(item, result))
-        print("  .", end="", flush=True)
+        print("  ." if needs_answer else "  ,", end="", flush=True)
     print()
     elapsed = time.time() - started
 
@@ -160,6 +178,7 @@ def run_one(name: str, golden: list[dict], top_k: int) -> dict:
         "metrics": summarize_rows(rows),
         "seconds_total": round(elapsed, 1),
         "seconds_per_question": round(elapsed / max(1, len(golden)), 2),
+        "answers_generated": answers,
         "rows": rows,
     }
 
@@ -197,6 +216,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--top-k", type=int, default=config.TOP_K)
     parser.add_argument("--runs", nargs="+", default=["flat", "tree", "tree_hybrid"])
+    # Generating an answer for all 26 questions through a local model takes
+    # far longer than the retrieval metrics need, so default to the minimum.
+    parser.add_argument("--answers", default="unanswerable",
+                        choices=["none", "unanswerable", "all"])
     args = parser.parse_args()
 
     for name in args.runs:
@@ -209,7 +232,6 @@ def main() -> None:
 
     # Load the embedding model before timing, so the first run is not charged
     # for a one-off model load.
-    from app import retrieve
     retrieve.embed_query("warm up")
 
     from app import store, tree as tree_module
@@ -217,7 +239,7 @@ def main() -> None:
 
     runs = []
     for name in args.runs:
-        runs.append(run_one(name, golden, args.top_k))
+        runs.append(run_one(name, golden, args.top_k, args.answers))
 
     results = {
         "provider": llm.provider(),

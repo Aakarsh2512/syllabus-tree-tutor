@@ -274,6 +274,12 @@ def stream_complete(prompt: str, system: str = "", max_tokens: int = 700, temper
         yield word + " "
 
 
+# Summaries the model could not write, with the reason. build_index reports
+# these at the end: a silent fallback once hid two broken summaries inside a
+# 57-minute build.
+fallbacks = []
+
+
 def summarize(texts: list[str]) -> str:
     """Summarize the passages of one cluster into a parent node's text."""
     joined = "\n\n---\n\n".join(texts)
@@ -283,6 +289,8 @@ def summarize(texts: list[str]) -> str:
     if provider() == "offline":
         return extractive_summary(joined, max_sentences=6)
 
+    summary = ""
+    reason = ""
     try:
         summary = complete(
             SUMMARY_INSTRUCTION + joined,
@@ -290,11 +298,16 @@ def summarize(texts: list[str]) -> str:
             max_tokens=400,
             temperature=0.0,
         )
-    except Exception:
-        summary = ""
+        if summary.strip() == "":
+            reason = "model returned an empty response"
+    except Exception as error:
+        reason = type(error).__name__ + ": " + str(error)
 
-    if summary.strip() == "":
+    if reason != "":
+        fallbacks.append({"chars_sent": len(joined), "reason": reason})
+        print("    ! summary fell back to extractive - " + reason, flush=True)
         return extractive_summary(joined, max_sentences=6)
+
     return summary.strip()
 
 

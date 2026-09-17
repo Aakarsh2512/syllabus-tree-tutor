@@ -15,6 +15,8 @@ so a detailed question can match a chunk while a broad question matches a
 summary that already spans many chunks.
 """
 
+import time
+
 import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.mixture import GaussianMixture
@@ -150,7 +152,11 @@ def build_tree(leaves: list[dict], embedder, progress=None) -> tuple[list[dict],
                 leaf_total = leaf_total + node["member_count"]
 
             summary_counter = summary_counter + 1
+            summary_started = time.time()
             summary_text = llm.summarize(member_texts)
+            report("  summary " + str(summary_counter) + " of cluster with "
+                   + str(len(group)) + " nodes took "
+                   + str(round(time.time() - summary_started, 1)) + "s")
 
             if len(member_sources) == 1:
                 source_label = list(member_sources)[0]

@@ -46,6 +46,13 @@ def main() -> None:
 
     nodes, embeddings = tree.build_tree(leaves, embedder, progress=progress)
 
+    if len(llm.fallbacks) > 0:
+        print()
+        print("WARNING:", len(llm.fallbacks), "of the summaries could not be written by",
+              llm.provider(), "and fell back to extractive text:")
+        for item in llm.fallbacks:
+            print("  -", item["chars_sent"], "chars sent |", item["reason"])
+
     stats = tree.tree_stats(nodes)
     meta = {
         "documents": len(pdfs),
@@ -56,6 +63,7 @@ def main() -> None:
         "chunk_overlap": config.CHUNK_OVERLAP,
         "stats": stats,
         "build_seconds": round(time.time() - started, 1),
+        "summary_fallbacks": len(llm.fallbacks),
     }
     store.save_index(nodes, embeddings, meta)
 
