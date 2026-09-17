@@ -1,0 +1,15 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+python-dotenv>=1.0
+pydantic>=2.7
+
+numpy>=1.26
+scikit-learn>=1.4
+sentence-transformers>=3.0
+pypdf>=4.2
+rank-bm25>=0.2.2
+
+# Optional LLM providers. Ollama needs no package (plain HTTP).
+anthropic>=0.40
+openai>=1.40

@@ -1,0 +1,21 @@
+# Course material and generated index are never committed
+data/raw/*
+!data/raw/.gitkeep
+data/index/*
+!data/index/.gitkeep
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.env
+
+# Node
+node_modules/
+frontend/dist/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

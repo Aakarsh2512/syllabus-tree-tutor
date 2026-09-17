@@ -1,0 +1,26 @@
+{"id": "s01", "category": "specific", "question": "What is the combined friction, windage and core loss in the DC machine question?", "evidence_any": ["Combined friction, windage & core loss = 16505 W"]}
+{"id": "s02", "category": "specific", "question": "What generated EMF Eg is obtained for the long shunt connection?", "evidence_any": ["Eg = 234.823 V"]}
+{"id": "s03", "category": "specific", "question": "What armature resistance results after rewinding from lap to wave?", "evidence_any": ["Ra = 3.200"]}
+{"id": "s04", "category": "specific", "question": "What is the full-load slip of the induction motor?", "evidence_any": ["Full-load slip", "0.050"]}
+{"id": "s05", "category": "specific", "question": "What rotor resistance must be added to get maximum starting torque?", "evidence_any": ["Rotor resistance to add for maximum starting torque"]}
+{"id": "s06", "category": "specific", "question": "What is the slip at maximum torque as a percentage?", "evidence_any": ["smaxT = 24.04"]}
+{"id": "s07", "category": "specific", "question": "What EMF does the wave winding produce in the EMF equation question?", "evidence_any": ["E = 633.600 V"]}
+{"id": "s08", "category": "specific", "question": "How is the armature copper loss calculated for the generator delivering 12 kW at 260 V?", "evidence_any": ["Armature Cu loss"]}
+{"id": "s09", "category": "specific", "question": "What does the F5 key do in Aspen Plus?", "evidence_any": ["F5 runs the simulation"]}
+{"id": "s10", "category": "specific", "question": "What does Shift+F5 do in Aspen Plus?", "evidence_any": ["Shift+F5 reinitializes"]}
+{"id": "s11", "category": "specific", "question": "What are the cricondenbar and cricondentherm?", "evidence_any": ["cricondenbar and cricondentherm"]}
+{"id": "s12", "category": "specific", "question": "What split does the decanter in Set 2 Problem 8 give?", "evidence_any": ["59.3 % / 40.7 %"]}
+{"id": "s13", "category": "specific", "question": "At what temperature does the water-cyclohexane azeotrope boil?", "evidence_any": ["cyclohexane (heterogeneous) at 68.8"]}
+{"id": "s14", "category": "specific", "question": "Which azeotrope is the lowest boiler and why does that matter?", "evidence_any": ["The ternary azeotrope at 62"]}
+{"id": "b01", "category": "broad", "question": "What topics does the EE2200 Electrical Machines quiz cover overall?", "evidence_all": ["Induction Motors", "Electrical Machines"]}
+{"id": "b02", "category": "broad", "question": "Which property methods suit polar mixtures with azeotropes, and which do not?", "evidence_all": ["NRTL", "PENG-ROB"]}
+{"id": "b03", "category": "broad", "question": "Give an overview of the parts of the Aspen Plus viva guide.", "evidence_all": ["Core concepts", "Numbers to remember"]}
+{"id": "b04", "category": "broad", "question": "What kinds of loss calculations appear across the DC machine questions?", "evidence_all": ["Armature Cu loss", "friction + windage + core"]}
+{"id": "b05", "category": "broad", "question": "Which distillation blocks are used across the problem sets, and what for?", "evidence_all": ["DSTWU", "RadFrac"]}
+{"id": "b06", "category": "broad", "question": "What should I revise about induction motor torque and slip?", "evidence_all": ["slip", "torque"]}
+{"id": "b07", "category": "broad", "question": "Summarise what the Aspen problem sets 2, 3a and 3b involve.", "evidence_all": ["Problem Sets 2, 3a and 3b", "Set 3b"]}
+{"id": "b08", "category": "broad", "question": "Across both courses, what kinds of calculations am I expected to perform?", "evidence_all": ["Step 1", "Step 2"]}
+{"id": "u01", "category": "unanswerable", "question": "What is the attendance policy for missing a lab session?", "expected_refusal": true}
+{"id": "u02", "category": "unanswerable", "question": "How much are the semester tuition fees for this course?", "expected_refusal": true}
+{"id": "u03", "category": "unanswerable", "question": "Who is the head of the electrical engineering department?", "expected_refusal": true}
+{"id": "u04", "category": "unanswerable", "question": "What is the syllabus for the machine learning elective?", "expected_refusal": true}
