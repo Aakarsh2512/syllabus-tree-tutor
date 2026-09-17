@@ -119,34 +119,65 @@ The evaluation set is 26 hand-written questions over the demo corpus:
 of the corpus), 4 **unanswerable** (the corpus genuinely cannot answer them, so
 the right response is to refuse).
 
+Summaries written by `llama3.2:3b` through Ollama, answers by the same model:
+
 | Run | Specific hit@6 | Specific MRR | Broad coverage | Refusal rate | Summary nodes / query |
 |---|---|---|---|---|---|
-| `flat` (baseline) | 1.000 | 0.738 | 0.938 | 0.750 | 0.00 |
-| `tree` (RAPTOR) | 1.000 | 0.726 | 0.938 | 0.500 | 0.77 |
-| `tree_hybrid` (+ BM25) | 0.929 | 0.786 | 0.812 | 0.250 | 0.50 |
+| `flat` (baseline) | 1.000 | 0.738 | 0.938 | 1.000 | 0.00 |
+| `tree` (RAPTOR) | 1.000 | 0.726 | 0.938 | 1.000 | 0.96 |
+| `tree_hybrid` (+ BM25) | 0.929 | 0.786 | 0.875 | 1.000 | 0.92 |
+
+Earlier run, with extractive summaries instead (`LLM_PROVIDER=offline`), for comparison:
+
+| Run | Specific hit@6 | Specific MRR | Broad coverage | Refusal rate | Summary nodes / query |
+|---|---|---|---|---|---|
+| `flat` | 1.000 | 0.738 | 0.938 | 0.750 | 0.00 |
+| `tree` | 1.000 | 0.726 | 0.938 | 0.500 | 0.77 |
+| `tree_hybrid` | 0.929 | 0.786 | 0.812 | 0.250 | 0.50 |
+
+**What changed when real summaries replaced extractive ones:** refusal rate went
+from 0.25–0.75 to **1.000 across all three runs** — every unanswerable question
+is now correctly declined instead of answered from irrelevant passages. The tree
+is also genuinely used more (0.96 summary nodes per query, up from 0.77), and
+every broad question except one retrieves at least one summary.
+
+**What did not change:** the retrieval metrics are identical, because the leaf
+chunks and their embeddings never changed — only the summaries did.
 
 ### What didn't work, and why
 
-**The tree has not beaten the baseline yet.** That is the honest state of this
-repo, and there are three identified reasons:
+**The tree still does not beat the baseline on retrieval quality** — but the
+reason is now clear, and it is the measurement, not the method.
 
-1. **The summaries are extractive, not abstractive.** With `LLM_PROVIDER=offline`
-   a "summary" is a handful of sentences lifted from the cluster, so a summary
-   node is a worse version of its own chunks rather than a genuine overview. The
-   paper's gains come from *written* summaries. Rebuilding with Ollama is the
-   next experiment, and the one most likely to change the table.
-2. **The broad metric saturates.** Keyword-coverage evidence is satisfied by the
-   flat baseline too, so both score 0.938 and there is no room to show a
-   difference. Broad questions need evidence spread across distant parts of the
-   corpus that six chunks cannot cover but one summary can.
+1. **The broad metric is saturated.** Both `flat` and `tree` score 0.938, and 7
+   of the 8 broad questions score a perfect 1.00 for both. A metric with no
+   headroom cannot show a difference. The evidence quotes are keyword-ish
+   (`"DSTWU"`, `"NRTL"`), and six chunks happen to contain them, so the flat
+   baseline satisfies them too. Broad questions need required evidence spread
+   across *more* of the corpus than six chunks can physically hold, which is the
+   only situation where a 91-chunk summary has an advantage it cannot fake.
+   **This is the next thing to fix, and it must be fixed before the comparison
+   means anything.**
+2. **Summary quality was a red herring for retrieval, but decisive for answers.**
+   Replacing extractive summaries with written ones changed the retrieval
+   numbers not at all, and the refusal rate from 0.25–0.75 to 1.000. The lesson:
+   the summaries affect what the model *does with* retrieved context far more
+   than what gets retrieved.
 3. **The corpus is small and repetitive** — 192 chunks, and four of the five PDFs
    are variants of the same quiz. Near-duplicate filtering (cosine ≥ 0.95) was
    added because the top 6 results were otherwise four copies of one page; it
    skips 2 nodes on a typical query.
 
-Also observed: on *specific* questions the tree sometimes ranks a broad summary
-above the chunk that literally contains the number, which costs MRR
-(0.726 vs 0.738). A level-aware score penalty is the obvious thing to try.
+Also observed: 7 of the 14 *specific* questions retrieve a summary node, twice at
+rank 1, which is exactly the failure mode you would fear — a broad summary
+outranking the chunk holding the actual number. It costs a little MRR (0.726 vs
+0.738) but never a hit, so the effect is real but small. A level-aware score
+penalty is the obvious thing to try.
+
+**Two summaries are still extractive.** `S1-001` and `S1-005` fell back when
+their Ollama calls returned nothing, and the original code swallowed that
+silently inside a 57-minute build. Failures are now reported as they happen and
+counted in `meta.json`; those two nodes still need repairing.
 
 ## API
 
@@ -193,8 +224,9 @@ so the whole bundle is React plus about 700 lines of application code.
 
 ## Next steps
 
-- [ ] Rebuild with Ollama summaries and re-run the evaluation (expected to be the big one)
-- [ ] Redesign the broad questions so the metric can discriminate
+- [x] Rebuild with Ollama summaries and re-run the evaluation — done; refusal rate reached 1.000, retrieval unchanged
+- [ ] Redesign the broad questions so the metric can discriminate (**the blocker**)
+- [ ] Repair the two summaries that fell back to extractive text
 - [ ] Try a level-aware score penalty so summaries stop outranking exact chunks
 - [ ] Add a cross-encoder reranker over the top 50 candidates
 - [ ] Index-time deduplication, so the four quiz variants collapse into one

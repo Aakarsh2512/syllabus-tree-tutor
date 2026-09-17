@@ -1,5 +1,5 @@
 {
- "provider": "offline",
+ "provider": "ollama",
  "index": {
   "documents": 5,
   "document_names": [
@@ -21,7 +21,7 @@
    },
    "documents": 5
   },
-  "summary_provider": "offline"
+  "summary_provider": "ollama"
  },
  "runs": [
   {
@@ -36,7 +36,7 @@
     "specific_hit_rate": 1.0,
     "specific_mrr": 0.7381,
     "broad_coverage": 0.9375,
-    "refusal_rate": 0.75,
+    "refusal_rate": 1.0,
     "avg_summary_hits": 0.0,
     "counts": {
      "specific": 14,
@@ -44,8 +44,9 @@
      "unanswerable": 4
     }
    },
-   "seconds_total": 27.0,
-   "seconds_per_question": 1.04,
+   "seconds_total": 493.7,
+   "seconds_per_question": 18.99,
+   "answers_generated": "unanswerable",
    "rows": [
     {
      "id": "s01",
@@ -533,7 +534,7 @@
      "levels_used": {
       "0": 6
      },
-     "refused": 0
+     "refused": 1
     },
     {
      "id": "u04",
@@ -567,16 +568,17 @@
     "specific_hit_rate": 1.0,
     "specific_mrr": 0.7262,
     "broad_coverage": 0.9375,
-    "refusal_rate": 0.5,
-    "avg_summary_hits": 0.7692,
+    "refusal_rate": 1.0,
+    "avg_summary_hits": 0.9615,
     "counts": {
      "specific": 14,
      "broad": 8,
      "unanswerable": 4
     }
    },
-   "seconds_total": 0.6,
-   "seconds_per_question": 0.02,
+   "seconds_total": 354.1,
+   "seconds_per_question": 13.62,
+   "answers_generated": "unanswerable",
    "rows": [
     {
      "id": "s01",
@@ -586,14 +588,13 @@
       "L0171",
       "L0064",
       "L0111",
-      "S2-008",
-      "S1-004",
-      "L0065"
+      "L0065",
+      "S1-005",
+      "L0137"
      ],
-     "summary_hits": 2,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 4,
-      "2": 1,
+      "0": 5,
       "1": 1
      },
      "hit": 1,
@@ -606,11 +607,11 @@
      "question": "What generated EMF Eg is obtained for the long shunt connection?",
      "retrieved": [
       "L0170",
-      "S1-005",
       "L0068",
       "L0063",
       "L0140",
-      "L0160"
+      "L0160",
+      "S1-005"
      ],
      "summary_hits": 1,
      "levels_used": {
@@ -618,8 +619,8 @@
       "1": 1
      },
      "hit": 1,
-     "rank": 3,
-     "reciprocal_rank": 0.3333333333333333
+     "rank": 2,
+     "reciprocal_rank": 0.5
     },
     {
      "id": "s03",
@@ -627,15 +628,16 @@
      "question": "What armature resistance results after rewinding from lap to wave?",
      "retrieved": [
       "L0076",
+      "S2-009",
       "L0104",
       "L0166",
       "L0099",
-      "L0100",
-      "L0098"
+      "L0100"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "0": 5,
+      "2": 1
      },
      "hit": 1,
      "rank": 1,
@@ -649,9 +651,9 @@
       "L0147",
       "L0079",
       "L0110",
+      "S1-004",
       "S1-001",
-      "L0113",
-      "S1-004"
+      "L0113"
      ],
      "summary_hits": 2,
      "levels_used": {
@@ -672,12 +674,11 @@
       "L0116",
       "L0077",
       "L0081",
-      "S1-004"
+      "L0146"
      ],
-     "summary_hits": 1,
+     "summary_hits": 0,
      "levels_used": {
-      "0": 5,
-      "1": 1
+      "0": 6
      },
      "hit": 1,
      "rank": 1,
@@ -693,12 +694,11 @@
       "L0146",
       "L0083",
       "L0179",
-      "S1-004"
+      "L0147"
      ],
-     "summary_hits": 1,
+     "summary_hits": 0,
      "levels_used": {
-      "0": 5,
-      "1": 1
+      "0": 6
      },
      "hit": 1,
      "rank": 1,
@@ -750,19 +750,20 @@
      "question": "What does the F5 key do in Aspen Plus?",
      "retrieved": [
       "L0034",
+      "S1-006",
       "L0009",
       "L0001",
       "L0026",
-      "L0010",
-      "L0014"
+      "L0010"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "0": 5,
+      "1": 1
      },
      "hit": 1,
-     "rank": 2,
-     "reciprocal_rank": 0.5
+     "rank": 3,
+     "reciprocal_rank": 0.3333333333333333
     },
     {
      "id": "s10",
@@ -772,13 +773,14 @@
       "L0034",
       "L0009",
       "L0026",
+      "S1-006",
       "L0010",
-      "L0147",
-      "L0039"
+      "L0147"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "0": 5,
+      "1": 1
      },
      "hit": 1,
      "rank": 2,
@@ -792,8 +794,8 @@
       "L0022",
       "L0020",
       "L0057",
-      "S1-005",
       "L0126",
+      "S1-002",
       "L0043"
      ],
      "summary_hits": 1,
@@ -872,15 +874,15 @@
      "retrieved": [
       "L0059",
       "L0092",
-      "L0099",
       "S2-009",
+      "L0099",
       "L0093",
-      "L0129"
+      "S2-008"
      ],
-     "summary_hits": 1,
+     "summary_hits": 2,
      "levels_used": {
-      "0": 5,
-      "2": 1
+      "0": 4,
+      "2": 2
      },
      "coverage": 1.0,
      "missing": []
@@ -891,16 +893,15 @@
      "question": "Which property methods suit polar mixtures with azeotropes, and which do not?",
      "retrieved": [
       "L0018",
-      "S1-003",
       "L0005",
       "L0026",
       "S2-007",
-      "L0004"
+      "L0004",
+      "L0038"
      ],
-     "summary_hits": 2,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 4,
-      "1": 1,
+      "0": 5,
       "2": 1
      },
      "coverage": 1.0,
@@ -911,16 +912,18 @@
      "category": "broad",
      "question": "Give an overview of the parts of the Aspen Plus viva guide.",
      "retrieved": [
+      "S1-006",
       "L0034",
       "L0001",
       "L0028",
       "L0005",
-      "L0037",
-      "L0008"
+      "S3-010"
      ],
-     "summary_hits": 0,
+     "summary_hits": 2,
      "levels_used": {
-      "0": 6
+      "1": 1,
+      "0": 4,
+      "3": 1
      },
      "coverage": 0.5,
      "missing": [
@@ -934,16 +937,16 @@
      "retrieved": [
       "L0098",
       "L0139",
-      "S1-002",
+      "S2-008",
+      "S1-005",
       "L0124",
-      "L0171",
-      "S2-008"
+      "L0171"
      ],
      "summary_hits": 2,
      "levels_used": {
       "0": 4,
-      "1": 1,
-      "2": 1
+      "2": 1,
+      "1": 1
      },
      "coverage": 1.0,
      "missing": []
@@ -954,15 +957,16 @@
      "question": "Which distillation blocks are used across the problem sets, and what for?",
      "retrieved": [
       "L0044",
+      "S1-006",
       "L0019",
       "L0039",
       "L0018",
-      "L0012",
-      "L0008"
+      "L0012"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "0": 5,
+      "1": 1
      },
      "coverage": 1.0,
      "missing": []
@@ -1013,14 +1017,16 @@
      "retrieved": [
       "L0017",
       "L0098",
+      "S3-010",
       "L0041",
-      "L0173",
-      "L0124",
-      "L0154"
+      "S2-007",
+      "L0173"
      ],
-     "summary_hits": 0,
+     "summary_hits": 2,
      "levels_used": {
-      "0": 6
+      "0": 4,
+      "3": 1,
+      "2": 1
      },
      "coverage": 1.0,
      "missing": []
@@ -1034,13 +1040,12 @@
       "L0010",
       "L0159",
       "L0014",
-      "S1-006",
-      "L0098"
+      "L0098",
+      "L0045"
      ],
-     "summary_hits": 1,
+     "summary_hits": 0,
      "levels_used": {
-      "0": 5,
-      "1": 1
+      "0": 6
      },
      "refused": 1
     },
@@ -1053,12 +1058,13 @@
       "L0098",
       "L0124",
       "L0045",
-      "L0013",
-      "L0046"
+      "S1-006",
+      "L0013"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "0": 5,
+      "1": 1
      },
      "refused": 1
     },
@@ -1067,19 +1073,20 @@
      "category": "unanswerable",
      "question": "Who is the head of the electrical engineering department?",
      "retrieved": [
-      "S1-005",
+      "S2-008",
       "L0161",
+      "S1-002",
       "L0059",
       "L0092",
-      "L0184",
-      "L0169"
+      "L0184"
      ],
-     "summary_hits": 1,
+     "summary_hits": 2,
      "levels_used": {
-      "1": 1,
-      "0": 5
+      "2": 1,
+      "0": 4,
+      "1": 1
      },
-     "refused": 0
+     "refused": 1
     },
     {
      "id": "u04",
@@ -1087,19 +1094,19 @@
      "question": "What is the syllabus for the machine learning elective?",
      "retrieved": [
       "L0017",
-      "S1-003",
+      "S3-010",
+      "S1-006",
       "L0009",
       "S1-001",
-      "S1-006",
-      "S2-007"
+      "L0010"
      ],
-     "summary_hits": 4,
+     "summary_hits": 3,
      "levels_used": {
-      "0": 2,
-      "1": 3,
-      "2": 1
+      "0": 3,
+      "3": 1,
+      "1": 2
      },
-     "refused": 0
+     "refused": 1
     }
    ]
   },
@@ -1114,17 +1121,18 @@
    "metrics": {
     "specific_hit_rate": 0.9286,
     "specific_mrr": 0.7857,
-    "broad_coverage": 0.8125,
-    "refusal_rate": 0.25,
-    "avg_summary_hits": 0.5,
+    "broad_coverage": 0.875,
+    "refusal_rate": 1.0,
+    "avg_summary_hits": 0.9231,
     "counts": {
      "specific": 14,
      "broad": 8,
      "unanswerable": 4
     }
    },
-   "seconds_total": 1.3,
-   "seconds_per_question": 0.05,
+   "seconds_total": 596.7,
+   "seconds_per_question": 22.95,
+   "answers_generated": "unanswerable",
    "rows": [
     {
      "id": "s01",
@@ -1155,12 +1163,13 @@
       "L0068",
       "L0140",
       "L0160",
-      "L0063",
-      "L0095"
+      "S1-005",
+      "L0063"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "0": 5,
+      "1": 1
      },
      "hit": 1,
      "rank": 2,
@@ -1172,16 +1181,16 @@
      "question": "What armature resistance results after rewinding from lap to wave?",
      "retrieved": [
       "L0076",
+      "S2-009",
       "L0104",
       "L0166",
       "L0065",
-      "L0103",
-      "S1-001"
+      "L0103"
      ],
      "summary_hits": 1,
      "levels_used": {
       "0": 5,
-      "1": 1
+      "2": 1
      },
      "hit": 1,
      "rank": 1,
@@ -1194,14 +1203,15 @@
      "retrieved": [
       "L0147",
       "L0110",
-      "S2-008",
+      "S1-004",
       "L0178",
-      "L0084",
-      "L0144"
+      "S2-008",
+      "L0084"
      ],
-     "summary_hits": 1,
+     "summary_hits": 2,
      "levels_used": {
-      "0": 5,
+      "0": 4,
+      "1": 1,
       "2": 1
      },
      "hit": 1,
@@ -1216,15 +1226,13 @@
       "L0080",
       "L0116",
       "L0148",
-      "S1-004",
       "L0081",
-      "S2-008"
+      "L0150",
+      "L0077"
      ],
-     "summary_hits": 2,
+     "summary_hits": 0,
      "levels_used": {
-      "0": 4,
-      "1": 1,
-      "2": 1
+      "0": 6
      },
      "hit": 1,
      "rank": 1,
@@ -1256,15 +1264,16 @@
      "question": "What EMF does the wave winding produce in the EMF equation question?",
      "retrieved": [
       "L0135",
-      "L0076",
       "L0099",
+      "L0076",
       "L0128",
       "L0136",
-      "L0166"
+      "S2-008"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "0": 5,
+      "2": 1
      },
      "hit": 0,
      "rank": 0,
@@ -1298,14 +1307,15 @@
      "retrieved": [
       "L0009",
       "L0010",
-      "L0026",
+      "S1-006",
       "L0014",
-      "L0034",
-      "L0001"
+      "L0026",
+      "L0028"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "0": 5,
+      "1": 1
      },
      "hit": 1,
      "rank": 1,
@@ -1318,9 +1328,9 @@
      "retrieved": [
       "L0009",
       "L0010",
-      "L0028",
-      "L0034",
       "L0026",
+      "L0034",
+      "L0028",
       "L0039"
      ],
      "summary_hits": 0,
@@ -1341,7 +1351,7 @@
       "L0007",
       "L0057",
       "L0051",
-      "L0019"
+      "L0009"
      ],
      "summary_hits": 0,
      "levels_used": {
@@ -1361,12 +1371,11 @@
       "L0013",
       "L0026",
       "L0014",
-      "S1-006"
+      "L0038"
      ],
-     "summary_hits": 1,
+     "summary_hits": 0,
      "levels_used": {
-      "0": 5,
-      "1": 1
+      "0": 6
      },
      "hit": 1,
      "rank": 1,
@@ -1418,20 +1427,20 @@
      "question": "What topics does the EE2200 Electrical Machines quiz cover overall?",
      "retrieved": [
       "L0160",
+      "S2-008",
       "L0092",
+      "S2-009",
       "L0159",
-      "L0137",
-      "L0068",
-      "L0125"
+      "S3-010"
      ],
-     "summary_hits": 0,
+     "summary_hits": 3,
      "levels_used": {
-      "0": 6
+      "0": 3,
+      "2": 2,
+      "3": 1
      },
-     "coverage": 0.5,
-     "missing": [
-      "Induction Motors"
-     ]
+     "coverage": 1.0,
+     "missing": []
     },
     {
      "id": "b02",
@@ -1439,17 +1448,17 @@
      "question": "Which property methods suit polar mixtures with azeotropes, and which do not?",
      "retrieved": [
       "L0005",
-      "S1-003",
       "L0004",
       "S2-007",
       "L0018",
-      "L0001"
+      "L0001",
+      "S3-010"
      ],
      "summary_hits": 2,
      "levels_used": {
       "0": 4,
-      "1": 1,
-      "2": 1
+      "2": 1,
+      "3": 1
      },
      "coverage": 1.0,
      "missing": []
@@ -1459,16 +1468,17 @@
      "category": "broad",
      "question": "Give an overview of the parts of the Aspen Plus viva guide.",
      "retrieved": [
+      "S1-006",
       "L0001",
       "L0005",
-      "L0008",
       "L0002",
-      "L0034",
-      "L0028"
+      "S1-003",
+      "L0034"
      ],
-     "summary_hits": 0,
+     "summary_hits": 2,
      "levels_used": {
-      "0": 6
+      "1": 2,
+      "0": 4
      },
      "coverage": 0.5,
      "missing": [
@@ -1480,18 +1490,19 @@
      "category": "broad",
      "question": "What kinds of loss calculations appear across the DC machine questions?",
      "retrieved": [
+      "S2-008",
       "L0098",
+      "S1-004",
       "S3-010",
       "L0068",
-      "S2-009",
-      "L0153",
-      "L0103"
+      "L0153"
      ],
-     "summary_hits": 2,
+     "summary_hits": 3,
      "levels_used": {
-      "0": 4,
-      "3": 1,
-      "2": 1
+      "2": 1,
+      "0": 3,
+      "1": 1,
+      "3": 1
      },
      "coverage": 0.5,
      "missing": [
@@ -1504,30 +1515,11 @@
      "question": "Which distillation blocks are used across the problem sets, and what for?",
      "retrieved": [
       "L0044",
-      "L0019",
+      "S1-006",
       "L0039",
-      "L0013",
+      "L0019",
       "L0033",
-      "L0018"
-     ],
-     "summary_hits": 0,
-     "levels_used": {
-      "0": 6
-     },
-     "coverage": 1.0,
-     "missing": []
-    },
-    {
-     "id": "b06",
-     "category": "broad",
-     "question": "What should I revise about induction motor torque and slip?",
-     "retrieved": [
-      "L0113",
-      "L0061",
-      "L0144",
-      "S1-001",
-      "L0164",
-      "L0131"
+      "L0013"
      ],
      "summary_hits": 1,
      "levels_used": {
@@ -1538,16 +1530,36 @@
      "missing": []
     },
     {
+     "id": "b06",
+     "category": "broad",
+     "question": "What should I revise about induction motor torque and slip?",
+     "retrieved": [
+      "S1-004",
+      "L0113",
+      "L0061",
+      "S1-001",
+      "L0131",
+      "L0164"
+     ],
+     "summary_hits": 2,
+     "levels_used": {
+      "1": 2,
+      "0": 4
+     },
+     "coverage": 1.0,
+     "missing": []
+    },
+    {
      "id": "b07",
      "category": "broad",
      "question": "Summarise what the Aspen problem sets 2, 3a and 3b involve.",
      "retrieved": [
       "L0001",
-      "S1-006",
       "L0014",
       "L0008",
-      "L0021",
-      "L0005"
+      "S1-006",
+      "L0005",
+      "L0021"
      ],
      "summary_hits": 1,
      "levels_used": {
@@ -1562,16 +1574,17 @@
      "category": "broad",
      "question": "Across both courses, what kinds of calculations am I expected to perform?",
      "retrieved": [
-      "L0100",
+      "S2-007",
       "L0153",
+      "L0100",
       "L0041",
-      "L0101",
       "L0134",
-      "L0005"
+      "L0101"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
+      "2": 1,
+      "0": 5
      },
      "coverage": 1.0,
      "missing": []
@@ -1581,8 +1594,8 @@
      "category": "unanswerable",
      "question": "What is the attendance policy for missing a lab session?",
      "retrieved": [
-      "L0014",
       "L0001",
+      "L0014",
       "L0010",
       "L0049",
       "L0013",
@@ -1592,7 +1605,7 @@
      "levels_used": {
       "0": 6
      },
-     "refused": 0
+     "refused": 1
     },
     {
      "id": "u02",
@@ -1618,18 +1631,18 @@
      "question": "Who is the head of the electrical engineering department?",
      "retrieved": [
       "L0136",
-      "L0086",
+      "S2-008",
+      "S2-009",
       "L0102",
       "L0068",
-      "S1-005",
       "L0125"
      ],
-     "summary_hits": 1,
+     "summary_hits": 2,
      "levels_used": {
-      "0": 5,
-      "1": 1
+      "0": 4,
+      "2": 2
      },
-     "refused": 0
+     "refused": 1
     },
     {
      "id": "u04",
@@ -1647,7 +1660,7 @@
      "levels_used": {
       "0": 6
      },
-     "refused": 0
+     "refused": 1
     }
    ]
   }
