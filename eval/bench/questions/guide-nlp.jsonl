@@ -1,0 +1,4 @@
+{"category": "specific", "question": "What is the main difference between LSTM and GRU?", "evidence_any": ["Fewer parameters, faster to train, and often about as accurate."], "source_chunk": "L0020", "id": "guide-nlp-01"}
+{"category": "specific", "question": "What is the weakness of the bag-of-words method?", "evidence_any": ["dog bites man"], "source_chunk": "L0012", "id": "guide-nlp-02"}
+{"category": "specific", "question": "What is the process called when the model learns from examples with correct answers?", "evidence_any": ["supervised learning"], "source_chunk": "L0003", "id": "guide-nlp-03"}
+{"category": "specific", "question": "What is the problem with RNNs that prevents them from utilizing GPU parallel processing?", "evidence_any": ["step 50 must wait for step 49"], "source_chunk": "L0019", "id": "guide-nlp-04"}

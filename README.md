@@ -5,6 +5,11 @@ Processing for Tree-Organized Retrieval** ([arXiv 2401.18059](https://arxiv.org/
 with an ordinary chunk-search baseline running beside it so you can see what the
 tree actually buys.
 
+On [QuALITY](https://github.com/nyu-mll/quality), the human-written benchmark the
+RAPTOR paper itself reports on, the tree answers **71.7%** of questions correctly
+against **60.0%** for ordinary chunk retrieval — **+11.7 points, p = 0.039** — at
+the same context budget, on the same chunks, with the same model.
+
 Ordinary RAG splits documents into chunks and searches the chunks. That works for
 narrow questions ("what is the full-load slip?") and badly for broad ones ("what
 does this cover?"), because no single chunk contains the answer to a broad
@@ -147,9 +152,91 @@ answers. The demo corpus is two of my own study guides (on RAG and on
 transformers), in [`deploy/demo/`](deploy/demo); uploads are capped at 3 PDFs /
 15 MB and cleared when the Space restarts.
 
-## Results
+## Results: a public benchmark
 
-The evaluation set is 26 hand-written questions over the demo corpus (5 PDFs,
+Self-written questions over one corpus can flatter a method, so the main
+evaluation uses **[QuALITY](https://github.com/nyu-mll/quality)** (Pang et al.,
+2022), the benchmark the RAPTOR paper reports on: multiple-choice questions
+written by people over long articles, where roughly half are marked *difficult*
+because annotators could not answer them by skimming. Four options, so guessing
+scores 25%.
+
+60 questions over 6 articles (3 Project Gutenberg stories, 2 Slate features, 1
+long-form piece), 30 of them difficult. Every method sees **6 passages** of
+context — about 1,800 tokens, close to the paper's own 2,000-token budget — and
+the same local model (`llama3.2:3b`) answers.
+
+| Method | All | Difficult | Not difficult | Summary nodes used / question |
+|---|---|---|---|---|
+| `flat` — ordinary chunk retrieval | 60.0% | 43.3% | 76.7% | 0.00 |
+| `tree_ext` — tree, extractive summaries | 65.0% | 50.0% | 80.0% | 1.83 |
+| **`tree_llm` — tree, model-written summaries** | **71.7%** | **53.3%** | **90.0%** | 2.98 |
+
+Because every method answers the same questions, the honest comparison is the
+questions where they *disagree*:
+
+| Method | Difference | 95% interval | Exact p | Both right | Only tree | Only flat | Both wrong |
+|---|---|---|---|---|---|---|---|
+| `tree_ext` | +5.0 pts | [−3.3, +13.3] | 0.453 | 34 | 5 | 2 | 19 |
+| **`tree_llm`** | **+11.7 pts** | **[+3.3, +21.7]** | **0.039** | 35 | 8 | 1 | 16 |
+
+Two things follow, and the second is the more interesting one:
+
+1. **The paper's method wins, and the win is unlikely to be luck.** The tree
+   answered 8 questions that flat retrieval got wrong, and lost only 1 in the
+   other direction. The bootstrap interval excludes zero and an exact test on the
+   disagreements gives p = 0.039.
+2. **The summaries have to be written, not extracted.** The same tree with
+   cheap extractive summaries gains only 5 points and does not reach
+   significance (p = 0.45). Having a hierarchy is not what helps; having a
+   hierarchy of *abstractions* is. This is the clearest answer in the project to
+   "is the LLM worth it?", and it cost 2.98 vs 1.83 summary nodes per question —
+   the written summaries also get retrieved more often, because they read like
+   an answer to a question about the whole text.
+
+Caveats, because they matter: 60 questions is small, the interval is wide
+(+3.3 to +21.7 points), and everything here uses one 3B model at one context
+budget. It is evidence, not proof.
+
+Reproduce with `python eval/benchmark.py quality-build` then `quality-run`;
+numbers in [`eval/bench/quality_results.md`](eval/bench/quality_results.md).
+
+## Results: does the tree cost anything on precise questions?
+
+A hierarchy that helps broad questions could easily hurt narrow ones, since
+summaries take slots that chunks would otherwise fill. Tested on **8 documents
+across 7 genres** — two arXiv papers (ML and physics), a survey, the NIST AI Risk
+Management Framework, two study guides, a lab Q&A guide and a quiz solution set,
+526 chunks in total, each document indexed separately.
+
+32 questions were generated from single passages by the model and kept only when
+their answer phrase appeared word for word in the source passage.
+
+| Passages retrieved | `flat` | `tree_ext` | `tree_llm` |
+|---|---|---|---|
+| 4 | 0.688 | 0.656 | 0.656 |
+| 6 | 0.750 | 0.719 | 0.688 |
+| 8 | 0.781 | 0.781 | 0.781 |
+
+The tree costs **one or two questions out of 32** at tight budgets and nothing at
+all at 8 passages; every interval touches zero. So the gain on whole-document
+questions does not come at a meaningful price on lookups.
+
+Document type mattered far more than retrieval method: research papers scored
+about 0.55 for every method, while study guides and the lab Q&A guide scored
+1.000 for all of them.
+
+**On generating the questions.** Specific questions came out well. *Broad*
+questions did not: asked for a question spanning four passages, the 3B model
+produced lookups with evidence phrases that had nothing to do with what it had
+asked. Rather than benchmark against questions I could not trust, the broad case
+moved to QuALITY, where humans wrote the questions. The discarded generator is
+still in `eval/benchmark.py`, disabled, with a note explaining why.
+
+## Results: the original course-material set
+
+The first evaluation, kept because its failures are instructive. 26 hand-written
+questions over the demo corpus (5 PDFs,
 192 chunks, 202 nodes): 14 **specific** (one chunk holds the answer), 8 **broad**
 (the evidence is scattered), 4 **unanswerable** (the right response is to refuse).
 
@@ -338,6 +425,7 @@ The frontend has **no UI or charting dependencies** — the tree is hand-drawn S
 - [ ] Index-time deduplication, so near-identical documents collapse before chunking
 - [x] Dockerfile, single-port serving, Hugging Face Space deploy script
 - [ ] Publish the Space and link it here
+- [x] Evaluate on more documents and on a public human-written benchmark
 - [ ] Per-corpus evaluation, so an uploaded PDF can be scored the same way
 - [ ] Measure citation rate per mode, and prompt summaries to carry their sources
 

@@ -1,0 +1,55 @@
+{
+ "summary": {
+  "flat": {
+   "all": 0.6,
+   "difficult": 0.43333333333333335,
+   "not_difficult": 0.7666666666666667,
+   "n": 60,
+   "summaries": 0.0
+  },
+  "tree_ext": {
+   "all": 0.65,
+   "difficult": 0.5,
+   "not_difficult": 0.8,
+   "n": 60,
+   "summaries": 1.83
+  },
+  "tree_llm": {
+   "all": 0.7166666666666667,
+   "difficult": 0.5333333333333333,
+   "not_difficult": 0.9,
+   "n": 60,
+   "summaries": 2.98
+  }
+ },
+ "comparisons": [
+  {
+   "method": "tree_ext",
+   "difference": 0.05,
+   "ci_low": -0.03333333333333333,
+   "ci_high": 0.13333333333333333,
+   "n": 60,
+   "counts": {
+    "both": 34,
+    "tree": 5,
+    "flat": 2,
+    "neither": 19
+   },
+   "p_value": 0.4531
+  },
+  {
+   "method": "tree_llm",
+   "difference": 0.11666666666666667,
+   "ci_low": 0.03333333333333333,
+   "ci_high": 0.21666666666666667,
+   "n": 60,
+   "counts": {
+    "both": 35,
+    "tree": 8,
+    "flat": 1,
+    "neither": 16
+   },
+   "p_value": 0.0391
+  }
+ ]
+}

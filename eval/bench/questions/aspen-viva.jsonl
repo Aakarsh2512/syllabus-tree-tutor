@@ -1,0 +1,4 @@
+{"category": "specific", "question": "When do you use a partial-vapor condenser?", "evidence_any": ["when the overhead is too light to condense economically,"], "source_chunk": "L0016", "id": "aspen-viva-01"}
+{"category": "specific", "question": "Why use STEAMNBS for the water block in Thermo-004?", "evidence_any": ["It is the steam table."], "source_chunk": "L0008", "id": "aspen-viva-02"}
+{"category": "specific", "question": "What is the purpose of module T-009?", "evidence_any": ["Txy diagram — ethylene / ethane"], "source_chunk": "L0003", "id": "aspen-viva-03"}
+{"category": "specific", "question": "Why remove hydrogen before the demethanizer?", "evidence_any": ["Hydrogen is over half the moles in the feed."], "source_chunk": "L0031", "id": "aspen-viva-04"}

@@ -1,0 +1,4 @@
+{"category": "specific", "question": "When is the agent the wrong choice?", "evidence_any": ["a tool-calling agent or a hardcoded pipeline"], "source_chunk": "L0021", "id": "guide-agents-01"}
+{"category": "specific", "question": "When is the agent the wrong choice?", "evidence_any": ["When the steps are known in advance."], "source_chunk": "L0022", "id": "guide-agents-02"}
+{"category": "specific", "question": "What is the focus of sections 7-9?", "evidence_any": ["Serving with FastAPI"], "source_chunk": "L0001", "id": "guide-agents-03"}
+{"category": "specific", "question": "How does the model interact with tools?", "evidence_any": ["run each one, and add the results to the conversation."], "source_chunk": "L0003", "id": "guide-agents-04"}

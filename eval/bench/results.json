@@ -1,0 +1,4041 @@
+{
+ "summary": {
+  "questions": {
+   "specific": 32
+  },
+  "by_budget": [
+   {
+    "category": "specific",
+    "k": 4,
+    "flat": 0.688,
+    "flat_summaries": 0.0,
+    "tree_ext": 0.656,
+    "tree_ext_summaries": 0.25,
+    "tree_ext_fine": 0.656,
+    "tree_ext_fine_summaries": 0.56,
+    "tree_llm": 0.656,
+    "tree_llm_summaries": 0.25
+   },
+   {
+    "category": "specific",
+    "k": 6,
+    "flat": 0.75,
+    "flat_summaries": 0.0,
+    "tree_ext": 0.719,
+    "tree_ext_summaries": 0.5,
+    "tree_ext_fine": 0.719,
+    "tree_ext_fine_summaries": 0.88,
+    "tree_llm": 0.688,
+    "tree_llm_summaries": 0.41
+   },
+   {
+    "category": "specific",
+    "k": 8,
+    "flat": 0.781,
+    "flat_summaries": 0.0,
+    "tree_ext": 0.781,
+    "tree_ext_summaries": 0.66,
+    "tree_ext_fine": 0.781,
+    "tree_ext_fine_summaries": 1.12,
+    "tree_llm": 0.781,
+    "tree_llm_summaries": 0.53
+   }
+  ],
+  "by_genre": [
+   {
+    "genre": "research paper",
+    "category": "specific",
+    "k": 6,
+    "flat": 0.556,
+    "n": 9,
+    "tree_ext": 0.444,
+    "tree_ext_fine": 0.444,
+    "tree_llm": 0.444
+   },
+   {
+    "genre": "survey",
+    "category": "specific",
+    "k": 6,
+    "flat": 0.6,
+    "n": 5,
+    "tree_ext": 0.6,
+    "tree_ext_fine": 0.6,
+    "tree_llm": 0.6
+   },
+   {
+    "genre": "policy framework",
+    "category": "specific",
+    "k": 6,
+    "flat": 0.6,
+    "n": 5,
+    "tree_ext": 0.6,
+    "tree_ext_fine": 0.6,
+    "tree_llm": 0.6
+   },
+   {
+    "genre": "study guide",
+    "category": "specific",
+    "k": 6,
+    "flat": 1.0,
+    "n": 8,
+    "tree_ext": 1.0,
+    "tree_ext_fine": 1.0,
+    "tree_llm": 1.0
+   },
+   {
+    "genre": "lab Q&A guide",
+    "category": "specific",
+    "k": 6,
+    "flat": 1.0,
+    "n": 4,
+    "tree_ext": 1.0,
+    "tree_ext_fine": 1.0,
+    "tree_llm": 0.75
+   },
+   {
+    "genre": "worked solutions",
+    "category": "specific",
+    "k": 6,
+    "flat": 1.0,
+    "n": 1,
+    "tree_ext": 1.0,
+    "tree_ext_fine": 1.0,
+    "tree_llm": 1.0
+   }
+  ],
+  "comparisons": [
+   {
+    "category": "specific",
+    "k": 4,
+    "method": "tree_ext",
+    "vs": "flat",
+    "difference": -0.031,
+    "ci_low": -0.094,
+    "ci_high": 0.0,
+    "n": 32
+   },
+   {
+    "category": "specific",
+    "k": 4,
+    "method": "tree_ext_fine",
+    "vs": "flat",
+    "difference": -0.031,
+    "ci_low": -0.094,
+    "ci_high": 0.0,
+    "n": 32
+   },
+   {
+    "category": "specific",
+    "k": 4,
+    "method": "tree_llm",
+    "vs": "flat",
+    "difference": -0.031,
+    "ci_low": -0.094,
+    "ci_high": 0.0,
+    "n": 32
+   },
+   {
+    "category": "specific",
+    "k": 6,
+    "method": "tree_ext",
+    "vs": "flat",
+    "difference": -0.031,
+    "ci_low": -0.094,
+    "ci_high": 0.0,
+    "n": 32
+   },
+   {
+    "category": "specific",
+    "k": 6,
+    "method": "tree_ext_fine",
+    "vs": "flat",
+    "difference": -0.031,
+    "ci_low": -0.094,
+    "ci_high": 0.0,
+    "n": 32
+   },
+   {
+    "category": "specific",
+    "k": 6,
+    "method": "tree_llm",
+    "vs": "flat",
+    "difference": -0.062,
+    "ci_low": -0.156,
+    "ci_high": 0.0,
+    "n": 32
+   },
+   {
+    "category": "specific",
+    "k": 8,
+    "method": "tree_ext",
+    "vs": "flat",
+    "difference": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "n": 32
+   },
+   {
+    "category": "specific",
+    "k": 8,
+    "method": "tree_ext_fine",
+    "vs": "flat",
+    "difference": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "n": 32
+   },
+   {
+    "category": "specific",
+    "k": 8,
+    "method": "tree_llm",
+    "vs": "flat",
+    "difference": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "n": 32
+   }
+  ]
+ },
+ "rows": [
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "raptor-paper",
+   "genre": "research paper",
+   "question": "raptor-paper-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 3
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 3
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ligo-paper",
+   "genre": "research paper",
+   "question": "ligo-paper-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "rag-survey",
+   "genre": "survey",
+   "question": "rag-survey-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 2
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 3
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "nist-ai-rmf",
+   "genre": "policy framework",
+   "question": "nist-ai-rmf-05",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-nlp",
+   "genre": "study guide",
+   "question": "guide-nlp-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 3
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 3
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 3
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 3
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 3
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 3
+  },
+  {
+   "document": "guide-agents",
+   "genre": "study guide",
+   "question": "guide-agents-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 0.0,
+   "summaries": 1
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-02",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-03",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "aspen-viva",
+   "genre": "lab Q&A guide",
+   "question": "aspen-viva-04",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "flat",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 1
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_ext",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_ext_fine",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 2
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 4,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 6,
+   "score": 1.0,
+   "summaries": 0
+  },
+  {
+   "document": "ee2200-quiz",
+   "genre": "worked solutions",
+   "question": "ee2200-quiz-01",
+   "category": "specific",
+   "method": "tree_llm",
+   "k": 8,
+   "score": 1.0,
+   "summaries": 0
+  }
+ ]
+}

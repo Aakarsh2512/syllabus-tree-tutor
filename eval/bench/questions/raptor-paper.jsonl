@@ -1,0 +1,4 @@
+{"category": "specific", "question": "What type of hardware was used for the experiments?", "evidence_any": ["an Apple M1 Mac"], "source_chunk": "L0054", "id": "raptor-paper-01"}
+{"category": "specific", "question": "What is the performance improvement of RAPTOR over DPR in the QuALITY dataset?", "evidence_any": ["a 2% and 5.1% improvement over DPR and BM25."], "source_chunk": "L0025", "id": "raptor-paper-02"}
+{"category": "specific", "question": "What model was used for DPR experiments?", "evidence_any": ["dpr-multiset-base model"], "source_chunk": "L0026", "id": "raptor-paper-03"}
+{"category": "specific", "question": "What is the benefit of the collapsed tree approach?", "evidence_any": ["greater flexibility"], "source_chunk": "L0019", "id": "raptor-paper-04"}

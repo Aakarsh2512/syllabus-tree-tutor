@@ -1,0 +1,5 @@
+{"category": "specific", "question": "What is challenging for estimating the search background?", "evidence_any": ["its properties must be empirically determined"], "source_chunk": "L0020", "id": "ligo-paper-01"}
+{"category": "specific", "question": "What is the name of the organization that supports the authors' research?", "evidence_any": ["The authors gratefully acknowledge the support of the NSF,"], "source_chunk": "L0037", "id": "ligo-paper-02"}
+{"category": "specific", "question": "What is the country of the 58th address?", "evidence_any": ["INFN, Sezione di Firenze, I-50019 Sesto Fiorentino, Firenze, Italy"], "source_chunk": "L0065", "id": "ligo-paper-03"}
+{"category": "specific", "question": "What was the first of a more sensitive network of detectors to begin observations?", "evidence_any": ["Advanced LIGO"], "source_chunk": "L0004", "id": "ligo-paper-04"}
+{"category": "specific", "question": "What is the significance of the signal?", "evidence_any": ["significance greater than 5.1σ"], "source_chunk": "L0001", "id": "ligo-paper-05"}

@@ -1,0 +1,5 @@
+{"category": "specific", "question": "What is the main challenge of Large Language Models?", "evidence_any": ["hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes."], "source_chunk": "L0001", "id": "rag-survey-01"}
+{"category": "specific", "question": "What is the name of the reading comprehension challenge?", "evidence_any": ["The narrativeqa reading comprehension challenge,"], "source_chunk": "L0094", "id": "rag-survey-02"}
+{"category": "specific", "question": "What is the purpose of the Search module?", "evidence_any": ["Search module adapts to specific scenarios"], "source_chunk": "L0015", "id": "rag-survey-03"}
+{"category": "specific", "question": "What is the impact of providing a large amount of context on inference speed?", "evidence_any": ["significantly impact its inference speed,"], "source_chunk": "L0063", "id": "rag-survey-04"}
+{"category": "specific", "question": "What is the primary retrieval source for open-domain question-answering (ODQA) tasks?", "evidence_any": ["Wikipedia Dump"], "source_chunk": "L0027", "id": "rag-survey-05"}

@@ -1,0 +1,13 @@
+{
+  "description": "Eight documents across seven genres, each indexed as its own corpus. Public documents are downloaded from the listed URLs; the last four are local.",
+  "documents": [
+    {"id": "raptor-paper", "genre": "research paper", "source": "https://arxiv.org/pdf/2401.18059", "title": "RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval"},
+    {"id": "ligo-paper", "genre": "research paper", "source": "https://arxiv.org/pdf/1602.03837", "title": "Observation of Gravitational Waves from a Binary Black Hole Merger"},
+    {"id": "rag-survey", "genre": "survey", "source": "https://arxiv.org/pdf/2312.10997", "title": "Retrieval-Augmented Generation for Large Language Models: A Survey"},
+    {"id": "nist-ai-rmf", "genre": "policy framework", "source": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf", "title": "NIST AI Risk Management Framework 1.0"},
+    {"id": "guide-nlp", "genre": "study guide", "source": "local: placement track guide, phase 1", "title": "NLP Fundamentals"},
+    {"id": "guide-agents", "genre": "study guide", "source": "local: placement track guide, phase 5", "title": "Agents, Tools and Serving"},
+    {"id": "aspen-viva", "genre": "lab Q&A guide", "source": "local: course material", "title": "Aspen Plus Viva Guide"},
+    {"id": "ee2200-quiz", "genre": "worked solutions", "source": "local: course material", "title": "EE2200 Electrical Machines Quiz 1 solutions"}
+  ]
+}

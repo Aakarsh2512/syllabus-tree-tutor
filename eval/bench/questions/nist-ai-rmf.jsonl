@@ -1,0 +1,5 @@
+{"category": "specific", "question": "What is the goal of the MAP function?", "evidence_any": ["inform an initial go/no-go decision"], "source_chunk": "L0072", "id": "nist-ai-rmf-01"}
+{"category": "specific", "question": "What type of monitoring is used for development?", "evidence_any": ["regular monitoring and maintenance"], "source_chunk": "L0089", "id": "nist-ai-rmf-02"}
+{"category": "specific", "question": "What are the three major categories of AI bias?", "evidence_any": ["systemic, computational and statistical, and human-cognitive."], "source_chunk": "L0054", "id": "nist-ai-rmf-03"}
+{"category": "specific", "question": "What is the primary goal of the AI RMF?", "evidence_any": ["address new risks as they emerge."], "source_chunk": "L0017", "id": "nist-ai-rmf-04"}
+{"category": "specific", "question": "What is the purpose of the MEASURE function?", "evidence_any": ["to AI systems"], "source_chunk": "L0080", "id": "nist-ai-rmf-05"}

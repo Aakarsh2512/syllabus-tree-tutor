@@ -23,3 +23,6 @@ frontend/dist/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Benchmark documents (third-party and private PDFs, and their indexes)
+data/bench/
