@@ -583,3 +583,141 @@ code {
   padding: 1px 5px;
   border-radius: 4px;
 }
+
+
+/* ------------------------------------------------------------- upload --- */
+.dropzone {
+  border: 1.5px dashed var(--line-2);
+  border-radius: 10px;
+  padding: 26px 18px;
+  text-align: center;
+  margin: 14px 0 6px;
+  background: var(--panel-2);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropzone[data-dragging="true"] {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.drop-big {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+button.linklike {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+}
+
+input.name-input {
+  background: var(--panel-2);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-width: 220px;
+}
+
+ol.buildlog {
+  margin: 0;
+  padding-left: 20px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--text-2);
+  max-height: 230px;
+  overflow-y: auto;
+}
+
+ol.buildlog li {
+  margin-bottom: 2px;
+}
+
+.bar.indeterminate {
+  margin-top: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar.indeterminate span {
+  position: absolute;
+  width: 34%;
+  animation: slide 1.4s ease-in-out infinite;
+}
+
+@keyframes slide {
+  0% { left: -34%; }
+  100% { left: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar.indeterminate span { animation: none; left: 0; width: 100%; opacity: 0.4; }
+}
+
+select.corpus-select {
+  background: var(--panel-2);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  max-width: 260px;
+}
+
+/* ------------------------------------------------------------ compare --- */
+ul.passages {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+li.passage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.passage-where {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.passage-text {
+  flex-basis: 100%;
+  color: var(--text-3);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.answer-box {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 4px;
+  min-height: 60px;
+}
+
+.panel[data-winner="true"] {
+  border-color: var(--line-2);
+}
+
+.verdict {
+  border-left: 3px solid var(--accent);
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+  vertical-align: middle;
+}

@@ -86,6 +86,13 @@ export default function EvalView() {
                   <td className="name">{run.name}</td>
                   {METRICS.map(function (metric) {
                     const value = run.metrics[metric.key];
+                    if (value === null || value === undefined) {
+                      return (
+                        <td key={metric.key} title="not measured in this run">
+                          &mdash;
+                        </td>
+                      );
+                    }
                     return (
                       <td key={metric.key}>
                         {value.toFixed(3)}

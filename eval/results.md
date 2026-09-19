@@ -7,8 +7,10 @@ Answer provider: `ollama`. top_k = 6.
 
 | Run | Specific hit@k | Specific MRR | Broad coverage | Refusal rate | Summary nodes / query | s per query |
 |---|---|---|---|---|---|---|
-| `flat` | 1.000 | 0.738 | 0.938 | 1.000 | 0.00 | 18.99 |
-| `tree` | 1.000 | 0.726 | 0.938 | 1.000 | 0.96 | 13.62 |
-| `tree_hybrid` | 0.929 | 0.786 | 0.875 | 1.000 | 0.92 | 22.95 |
+| `flat` | 1.000 | 0.738 | 0.600 |   -   | 0.00 | 0.01 |
+| `tree` | 1.000 | 0.726 | 0.625 |   -   | 1.46 | 0.01 |
+| `tree_hybrid` | 0.929 | 0.786 | 0.550 |   -   | 1.31 | 0.04 |
+| `tree_penalty` | 1.000 | 0.738 | 0.600 |   -   | 0.96 | 0.02 |
+| `tree_balanced` | 1.000 | 0.726 | 0.600 |   -   | 1.27 | 0.01 |
 
 Metric meanings are in `eval/run_eval.py`.

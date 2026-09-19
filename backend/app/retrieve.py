@@ -76,10 +76,48 @@ def drop_near_duplicates(order: list[int], matrix: np.ndarray, k: int, threshold
     return kept, dropped
 
 
+def take_slots(order: list[int], candidate_rows: list[int], nodes: list[dict],
+               matrix: np.ndarray, k: int, threshold: float, dedupe: bool,
+               max_summaries: int):
+    """Fill k result slots in ranked order, with two limits.
+
+    Near-duplicates are skipped, and at most `max_summaries` of the slots may
+    go to summary nodes. The cap exists because summaries compete with chunks
+    for a fixed number of slots: on a broad question a summary is worth more
+    than the chunk it displaces, but on a question whose answer sits in three
+    specific chunks, three summaries in the top six is a straight loss.
+    """
+    kept = []
+    dropped = []
+    summaries_taken = 0
+    for row in order:
+        is_summary = nodes[candidate_rows[row]]["kind"] == "summary"
+        if max_summaries is not None and is_summary and summaries_taken >= max_summaries:
+            continue
+
+        if dedupe:
+            is_duplicate = False
+            for kept_row in kept:
+                if float(matrix[row] @ matrix[kept_row]) >= threshold:
+                    is_duplicate = True
+                    break
+            if is_duplicate:
+                dropped.append(row)
+                continue
+
+        kept.append(row)
+        if is_summary:
+            summaries_taken = summaries_taken + 1
+        if len(kept) >= k:
+            break
+    return kept, dropped
+
+
 def search(question: str, mode: str = "tree", top_k: int = None, hybrid: bool = False,
-           dedupe: bool = True) -> dict:
+           dedupe: bool = True, summary_penalty: float = None,
+           max_summaries: int = None, corpus_id: str = None) -> dict:
     """Return the top nodes for a question, plus a trace of how they were found."""
-    nodes, embeddings, meta = store.load_index()
+    nodes, embeddings, meta = store.load_index(corpus_id)
     k = top_k if top_k is not None else config.TOP_K
 
     candidate_rows = []
@@ -92,7 +130,14 @@ def search(question: str, mode: str = "tree", top_k: int = None, hybrid: bool = 
     candidate_matrix = embeddings[candidate_rows]
     dense = candidate_matrix @ question_vector          # cosine: vectors are normalized
 
-    dense_order_local = np.argsort(dense)[::-1].tolist()
+    penalty = config.SUMMARY_PENALTY if summary_penalty is None else summary_penalty
+    ranking_scores = dense.copy()
+    if penalty != 0.0:
+        for local_row in range(len(candidate_rows)):
+            if nodes[candidate_rows[local_row]]["kind"] == "summary":
+                ranking_scores[local_row] = ranking_scores[local_row] - penalty
+
+    dense_order_local = np.argsort(ranking_scores)[::-1].tolist()
 
     if hybrid:
         texts = []
@@ -104,13 +149,10 @@ def search(question: str, mode: str = "tree", top_k: int = None, hybrid: bool = 
     else:
         order_local = dense_order_local
 
-    if dedupe:
-        chosen_local, dropped_local = drop_near_duplicates(
-            order_local, candidate_matrix, k, config.DEDUPE_THRESHOLD
-        )
-    else:
-        chosen_local = order_local[:k]
-        dropped_local = []
+    chosen_local, dropped_local = take_slots(
+        order_local, candidate_rows, nodes, candidate_matrix, k,
+        config.DEDUPE_THRESHOLD, dedupe, max_summaries,
+    )
 
     hits = []
     rank = 1
@@ -149,6 +191,8 @@ def search(question: str, mode: str = "tree", top_k: int = None, hybrid: bool = 
         "mode": mode,
         "hybrid": hybrid,
         "dedupe": dedupe,
+        "summary_penalty": penalty,
+        "max_summaries": max_summaries,
         "duplicates_skipped": len(duplicate_ids),
         "duplicate_ids": duplicate_ids,
         "top_k": k,
@@ -163,9 +207,9 @@ def search(question: str, mode: str = "tree", top_k: int = None, hybrid: bool = 
     return {"hits": hits, "trace": trace, "index_meta": meta}
 
 
-def expand_node(node_id: str) -> dict:
+def expand_node(node_id: str, corpus_id: str = None) -> dict:
     """A summary node plus the nodes it was built from, for the UI."""
-    table = store.nodes_by_id()
+    table = store.nodes_by_id(corpus_id)
     if node_id not in table:
         return {}
     node = table[node_id]

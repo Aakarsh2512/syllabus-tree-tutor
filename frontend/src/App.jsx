@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 
-import { getHealth } from "./api.js";
+import { getCorpora, getHealth } from "./api.js";
 import AskView from "./views/AskView.jsx";
 import TreeView from "./views/TreeView.jsx";
 import CompareView from "./views/CompareView.jsx";
 import EvalView from "./views/EvalView.jsx";
+import UploadView from "./views/UploadView.jsx";
 
 const TABS = [
+  { key: "upload", label: "Upload a PDF" },
+  { key: "compare", label: "Compare" },
   { key: "ask", label: "Ask" },
   { key: "tree", label: "Tree" },
-  { key: "compare", label: "Compare" },
   { key: "eval", label: "Evaluation" },
 ];
 
@@ -23,8 +25,9 @@ function readHash() {
     return item.key;
   });
   return {
-    tab: known.includes(name) ? name : "ask",
+    tab: known.includes(name) ? name : "compare",
     question: params.get("q") || "",
+    fast: params.get("fast") === "1",
   };
 }
 
@@ -32,10 +35,23 @@ export default function App() {
   const initial = readHash();
   const [tab, setTab] = useState(initial.tab);
   const [initialQuestion] = useState(initial.question);
+  const [initialFast] = useState(initial.fast);
   const [health, setHealth] = useState(null);
   const [healthError, setHealthError] = useState("");
+  const [corpora, setCorpora] = useState([]);
+  const [corpusId, setCorpusId] = useState("demo");
   // The nodes the last question retrieved, so the Tree view can light them up.
   const [highlightIds, setHighlightIds] = useState([]);
+
+  function refreshCorpora() {
+    getCorpora()
+      .then(function (payload) {
+        setCorpora(payload.corpora);
+      })
+      .catch(function () {
+        setCorpora([]);
+      });
+  }
 
   useEffect(function () {
     function onHashChange() {
@@ -49,14 +65,34 @@ export default function App() {
 
   useEffect(function () {
     getHealth()
-      .then(setHealth)
+      .then(function (payload) {
+        setHealth(payload);
+        setCorpora(payload.corpora || []);
+      })
       .catch(function (error) {
         setHealthError(error.message);
       });
   }, []);
 
-  const stats = health && health.index && health.index.stats ? health.index.stats : null;
+  function goTo(key) {
+    setTab(key);
+    window.location.hash = key;
+  }
+
+  function onCorpusReady(newCorpusId) {
+    refreshCorpora();
+    setCorpusId(newCorpusId);
+    setHighlightIds([]);
+    goTo("compare");
+  }
+
   const llm = health ? health.llm : null;
+  let current = null;
+  for (const corpus of corpora) {
+    if (corpus.corpus_id === corpusId) {
+      current = corpus;
+    }
+  }
 
   return (
     <div className="shell">
@@ -78,10 +114,24 @@ export default function App() {
               llm: {llm.provider}
             </span>
           )}
-          {stats && (
-            <span>
-              {stats.documents} docs · {stats.nodes} nodes · {stats.levels} levels
-            </span>
+          {corpora.length > 0 && (
+            <select
+              className="corpus-select"
+              value={corpusId}
+              onChange={function (event) {
+                setCorpusId(event.target.value);
+                setHighlightIds([]);
+              }}
+            >
+              {corpora.map(function (corpus) {
+                return (
+                  <option key={corpus.corpus_id} value={corpus.corpus_id}>
+                    {corpus.name}
+                    {corpus.stats ? " (" + corpus.stats.nodes + " nodes)" : ""}
+                  </option>
+                );
+              })}
+            </select>
           )}
           {healthError !== "" && <span className="error">backend offline</span>}
         </div>
@@ -93,8 +143,7 @@ export default function App() {
                 key={item.key}
                 data-active={tab === item.key}
                 onClick={function () {
-                  setTab(item.key);
-                  window.location.hash = item.key;
+                  goTo(item.key);
                 }}
               >
                 {item.label}
@@ -115,15 +164,25 @@ export default function App() {
           </div>
         )}
 
+        {tab === "upload" && <UploadView onReady={onCorpusReady} llm={llm} />}
+        {tab === "compare" && (
+          <CompareView
+            corpusId={corpusId}
+            corpusName={current ? current.name : ""}
+            llm={llm}
+            initialQuestion={initialQuestion}
+            initialFast={initialFast}
+          />
+        )}
         {tab === "ask" && (
           <AskView
             onRetrieved={setHighlightIds}
             llm={llm}
             initialQuestion={initialQuestion}
+            corpusId={corpusId}
           />
         )}
-        {tab === "tree" && <TreeView highlightIds={highlightIds} />}
-        {tab === "compare" && <CompareView />}
+        {tab === "tree" && <TreeView highlightIds={highlightIds} corpusId={corpusId} />}
         {tab === "eval" && <EvalView />}
       </main>
     </div>

@@ -35,8 +35,8 @@
    "metrics": {
     "specific_hit_rate": 1.0,
     "specific_mrr": 0.7381,
-    "broad_coverage": 0.9375,
-    "refusal_rate": 1.0,
+    "broad_coverage": 0.6,
+    "refusal_rate": null,
     "avg_summary_hits": 0.0,
     "counts": {
      "specific": 14,
@@ -44,9 +44,9 @@
      "unanswerable": 4
     }
    },
-   "seconds_total": 493.7,
-   "seconds_per_question": 18.99,
-   "answers_generated": "unanswerable",
+   "seconds_total": 0.4,
+   "seconds_per_question": 0.01,
+   "answers_generated": "none",
    "rows": [
     {
      "id": "s01",
@@ -331,156 +331,178 @@
     {
      "id": "b01",
      "category": "broad",
-     "question": "What topics does the EE2200 Electrical Machines quiz cover overall?",
+     "question": "Give me a revision list of every machine type and winding this quiz covers.",
      "retrieved": [
+      "L0166",
       "L0059",
-      "L0092",
       "L0099",
-      "L0093",
-      "L0129",
-      "L0074"
+      "L0092",
+      "L0105",
+      "L0104"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.6,
+     "missing": [
+      "autotransformer",
+      "induction motor"
+     ]
     },
     {
      "id": "b02",
      "category": "broad",
-     "question": "Which property methods suit polar mixtures with azeotropes, and which do not?",
+     "question": "Which Aspen blocks and separation tools are used across the problem sets?",
      "retrieved": [
-      "L0018",
+      "L0034",
+      "L0001",
       "L0005",
-      "L0026",
-      "L0004",
-      "L0038",
-      "L0007"
+      "L0028",
+      "L0017",
+      "L0044"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.8,
+     "missing": [
+      "decanter"
+     ]
     },
     {
      "id": "b03",
      "category": "broad",
-     "question": "Give an overview of the parts of the Aspen Plus viva guide.",
+     "question": "What losses and machine behaviours do the DC machine questions test?",
      "retrieved": [
-      "L0034",
-      "L0001",
-      "L0028",
-      "L0005",
-      "L0037",
-      "L0008"
+      "L0098",
+      "L0094",
+      "L0059",
+      "L0171",
+      "L0102",
+      "L0086"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
      },
-     "coverage": 0.5,
+     "coverage": 0.4,
      "missing": [
-      "Numbers to remember"
+      "brake",
+      "back emf",
+      "equivalent circuit"
      ]
     },
     {
      "id": "b04",
      "category": "broad",
-     "question": "What kinds of loss calculations appear across the DC machine questions?",
+     "question": "Across both of my courses, what are the main subject areas?",
      "retrieved": [
-      "L0098",
-      "L0139",
-      "L0124",
-      "L0171",
-      "L0078",
-      "L0064"
+      "L0017",
+      "L0186",
+      "L0015",
+      "L0008",
+      "L0020",
+      "L0022"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.6,
+     "missing": [
+      "induction motor",
+      "autotransformer"
+     ]
     },
     {
      "id": "b05",
      "category": "broad",
-     "question": "Which distillation blocks are used across the problem sets, and what for?",
+     "question": "What should I know about the Aspen Plus workflow and column setup?",
      "retrieved": [
-      "L0044",
-      "L0019",
-      "L0039",
-      "L0018",
-      "L0012",
-      "L0008"
+      "L0034",
+      "L0001",
+      "L0054",
+      "L0017",
+      "L0009",
+      "L0010"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.8,
+     "missing": [
+      "subcooled"
+     ]
     },
     {
      "id": "b06",
      "category": "broad",
-     "question": "What should I revise about induction motor torque and slip?",
+     "question": "What phase-equilibrium topics should I revise for the viva?",
      "retrieved": [
-      "L0077",
-      "L0061",
-      "L0178",
-      "L0147",
-      "L0113",
-      "L0110"
+      "L0001",
+      "L0021",
+      "L0005",
+      "L0018",
+      "L0015",
+      "L0045"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.6,
+     "missing": [
+      "Txy",
+      "entrainer"
+     ]
     },
     {
      "id": "b07",
      "category": "broad",
-     "question": "Summarise what the Aspen problem sets 2, 3a and 3b involve.",
+     "question": "What do the quiz questions ask about torque, speed and winding type?",
      "retrieved": [
-      "L0001",
-      "L0034",
-      "L0028",
-      "L0005",
-      "L0014",
-      "L0050"
+      "L0114",
+      "L0131",
+      "L0175",
+      "L0129",
+      "L0061",
+      "L0077"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.6,
+     "missing": [
+      "brake",
+      "lap winding"
+     ]
     },
     {
      "id": "b08",
      "category": "broad",
-     "question": "Across both courses, what kinds of calculations am I expected to perform?",
+     "question": "Which DC machine configurations appear in the quiz?",
      "retrieved": [
-      "L0017",
-      "L0098",
-      "L0041",
-      "L0173",
-      "L0124",
-      "L0154"
+      "L0059",
+      "L0092",
+      "L0093",
+      "L0149",
+      "L0151",
+      "L0147"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.4,
+     "missing": [
+      "series field",
+      "compound",
+      "wave winding"
+     ]
     },
     {
      "id": "u01",
@@ -497,8 +519,7 @@
      "summary_hits": 0,
      "levels_used": {
       "0": 6
-     },
-     "refused": 1
+     }
     },
     {
      "id": "u02",
@@ -515,8 +536,7 @@
      "summary_hits": 0,
      "levels_used": {
       "0": 6
-     },
-     "refused": 1
+     }
     },
     {
      "id": "u03",
@@ -533,8 +553,7 @@
      "summary_hits": 0,
      "levels_used": {
       "0": 6
-     },
-     "refused": 1
+     }
     },
     {
      "id": "u04",
@@ -551,8 +570,7 @@
      "summary_hits": 0,
      "levels_used": {
       "0": 6
-     },
-     "refused": 1
+     }
     }
    ]
   },
@@ -567,18 +585,18 @@
    "metrics": {
     "specific_hit_rate": 1.0,
     "specific_mrr": 0.7262,
-    "broad_coverage": 0.9375,
-    "refusal_rate": 1.0,
-    "avg_summary_hits": 0.9615,
+    "broad_coverage": 0.625,
+    "refusal_rate": null,
+    "avg_summary_hits": 1.4615,
     "counts": {
      "specific": 14,
      "broad": 8,
      "unanswerable": 4
     }
    },
-   "seconds_total": 354.1,
-   "seconds_per_question": 13.62,
-   "answers_generated": "unanswerable",
+   "seconds_total": 0.4,
+   "seconds_per_question": 0.01,
+   "answers_generated": "none",
    "rows": [
     {
      "id": "s01",
@@ -628,16 +646,15 @@
      "question": "What armature resistance results after rewinding from lap to wave?",
      "retrieved": [
       "L0076",
-      "S2-009",
       "L0104",
       "L0166",
       "L0099",
-      "L0100"
+      "L0100",
+      "L0098"
      ],
-     "summary_hits": 1,
+     "summary_hits": 0,
      "levels_used": {
-      "0": 5,
-      "2": 1
+      "0": 6
      },
      "hit": 1,
      "rank": 1,
@@ -652,13 +669,13 @@
       "L0079",
       "L0110",
       "S1-004",
-      "S1-001",
-      "L0113"
+      "L0113",
+      "L0178"
      ],
-     "summary_hits": 2,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 4,
-      "1": 2
+      "0": 5,
+      "1": 1
      },
      "hit": 1,
      "rank": 3,
@@ -870,18 +887,19 @@
     {
      "id": "b01",
      "category": "broad",
-     "question": "What topics does the EE2200 Electrical Machines quiz cover overall?",
+     "question": "Give me a revision list of every machine type and winding this quiz covers.",
      "retrieved": [
-      "L0059",
-      "L0092",
+      "S3-010",
+      "L0166",
+      "S2-008",
       "S2-009",
-      "L0099",
-      "L0093",
-      "S2-008"
+      "L0059",
+      "L0099"
      ],
-     "summary_hits": 2,
+     "summary_hits": 3,
      "levels_used": {
-      "0": 4,
+      "3": 1,
+      "0": 3,
       "2": 2
      },
      "coverage": 1.0,
@@ -890,57 +908,113 @@
     {
      "id": "b02",
      "category": "broad",
-     "question": "Which property methods suit polar mixtures with azeotropes, and which do not?",
-     "retrieved": [
-      "L0018",
-      "L0005",
-      "L0026",
-      "S2-007",
-      "L0004",
-      "L0038"
-     ],
-     "summary_hits": 1,
-     "levels_used": {
-      "0": 5,
-      "2": 1
-     },
-     "coverage": 1.0,
-     "missing": []
-    },
-    {
-     "id": "b03",
-     "category": "broad",
-     "question": "Give an overview of the parts of the Aspen Plus viva guide.",
+     "question": "Which Aspen blocks and separation tools are used across the problem sets?",
      "retrieved": [
       "S1-006",
+      "S2-007",
       "L0034",
       "L0001",
-      "L0028",
       "L0005",
-      "S3-010"
+      "L0028"
      ],
      "summary_hits": 2,
      "levels_used": {
       "1": 1,
-      "0": 4,
-      "3": 1
+      "2": 1,
+      "0": 4
      },
-     "coverage": 0.5,
+     "coverage": 0.4,
      "missing": [
-      "Numbers to remember"
+      "DSTWU",
+      "RadFrac",
+      "decanter"
+     ]
+    },
+    {
+     "id": "b03",
+     "category": "broad",
+     "question": "What losses and machine behaviours do the DC machine questions test?",
+     "retrieved": [
+      "S1-005",
+      "S3-010",
+      "L0098",
+      "S2-009",
+      "S2-008",
+      "L0094"
+     ],
+     "summary_hits": 4,
+     "levels_used": {
+      "1": 1,
+      "3": 1,
+      "0": 2,
+      "2": 2
+     },
+     "coverage": 0.8,
+     "missing": [
+      "brake"
      ]
     },
     {
      "id": "b04",
      "category": "broad",
-     "question": "What kinds of loss calculations appear across the DC machine questions?",
+     "question": "Across both of my courses, what are the main subject areas?",
      "retrieved": [
-      "L0098",
-      "L0139",
-      "S2-008",
-      "S1-005",
-      "L0124",
-      "L0171"
+      "S3-010",
+      "S2-009",
+      "S2-007",
+      "L0017",
+      "S1-006",
+      "L0186"
+     ],
+     "summary_hits": 4,
+     "levels_used": {
+      "3": 1,
+      "2": 2,
+      "0": 2,
+      "1": 1
+     },
+     "coverage": 0.8,
+     "missing": [
+      "DSTWU"
+     ]
+    },
+    {
+     "id": "b05",
+     "category": "broad",
+     "question": "What should I know about the Aspen Plus workflow and column setup?",
+     "retrieved": [
+      "S1-006",
+      "S2-007",
+      "S3-010",
+      "L0034",
+      "L0001",
+      "L0054"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "0": 3
+     },
+     "coverage": 0.4,
+     "missing": [
+      "reinitialize",
+      "subcooled",
+      "condenser"
+     ]
+    },
+    {
+     "id": "b06",
+     "category": "broad",
+     "question": "What phase-equilibrium topics should I revise for the viva?",
+     "retrieved": [
+      "L0001",
+      "S2-007",
+      "L0021",
+      "L0005",
+      "L0018",
+      "S1-006"
      ],
      "summary_hits": 2,
      "levels_used": {
@@ -948,88 +1022,59 @@
       "2": 1,
       "1": 1
      },
-     "coverage": 1.0,
-     "missing": []
-    },
-    {
-     "id": "b05",
-     "category": "broad",
-     "question": "Which distillation blocks are used across the problem sets, and what for?",
-     "retrieved": [
-      "L0044",
-      "S1-006",
-      "L0019",
-      "L0039",
-      "L0018",
-      "L0012"
-     ],
-     "summary_hits": 1,
-     "levels_used": {
-      "0": 5,
-      "1": 1
-     },
-     "coverage": 1.0,
-     "missing": []
-    },
-    {
-     "id": "b06",
-     "category": "broad",
-     "question": "What should I revise about induction motor torque and slip?",
-     "retrieved": [
-      "L0077",
-      "L0061",
-      "L0178",
-      "L0147",
-      "L0113",
-      "L0110"
-     ],
-     "summary_hits": 0,
-     "levels_used": {
-      "0": 6
-     },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.8,
+     "missing": [
+      "entrainer"
+     ]
     },
     {
      "id": "b07",
      "category": "broad",
-     "question": "Summarise what the Aspen problem sets 2, 3a and 3b involve.",
+     "question": "What do the quiz questions ask about torque, speed and winding type?",
      "retrieved": [
-      "L0001",
-      "L0034",
-      "S1-006",
-      "L0028",
-      "L0005",
-      "L0014"
+      "S2-009",
+      "S3-010",
+      "L0114",
+      "L0131",
+      "L0175",
+      "L0129"
      ],
-     "summary_hits": 1,
+     "summary_hits": 2,
      "levels_used": {
-      "0": 5,
-      "1": 1
+      "2": 1,
+      "3": 1,
+      "0": 4
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.4,
+     "missing": [
+      "synchronous speed",
+      "brake",
+      "lap winding"
+     ]
     },
     {
      "id": "b08",
      "category": "broad",
-     "question": "Across both courses, what kinds of calculations am I expected to perform?",
+     "question": "Which DC machine configurations appear in the quiz?",
      "retrieved": [
-      "L0017",
-      "L0098",
-      "S3-010",
-      "L0041",
-      "S2-007",
-      "L0173"
+      "L0059",
+      "L0092",
+      "S2-009",
+      "L0093",
+      "L0149",
+      "L0151"
      ],
-     "summary_hits": 2,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 4,
-      "3": 1,
+      "0": 5,
       "2": 1
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.4,
+     "missing": [
+      "series field",
+      "compound",
+      "wave winding"
+     ]
     },
     {
      "id": "u01",
@@ -1046,27 +1091,26 @@
      "summary_hits": 0,
      "levels_used": {
       "0": 6
-     },
-     "refused": 1
+     }
     },
     {
      "id": "u02",
      "category": "unanswerable",
      "question": "How much are the semester tuition fees for this course?",
      "retrieved": [
+      "S3-010",
+      "S2-007",
       "L0186",
       "L0098",
       "L0124",
-      "L0045",
-      "S1-006",
-      "L0013"
+      "L0045"
      ],
-     "summary_hits": 1,
+     "summary_hits": 2,
      "levels_used": {
-      "0": 5,
-      "1": 1
-     },
-     "refused": 1
+      "3": 1,
+      "2": 1,
+      "0": 4
+     }
     },
     {
      "id": "u03",
@@ -1074,39 +1118,39 @@
      "question": "Who is the head of the electrical engineering department?",
      "retrieved": [
       "S2-008",
+      "S1-001",
       "L0161",
       "S1-002",
-      "L0059",
-      "L0092",
-      "L0184"
+      "S3-010",
+      "S2-009"
      ],
-     "summary_hits": 2,
+     "summary_hits": 5,
      "levels_used": {
-      "2": 1,
-      "0": 4,
-      "1": 1
-     },
-     "refused": 1
+      "2": 2,
+      "1": 2,
+      "0": 1,
+      "3": 1
+     }
     },
     {
      "id": "u04",
      "category": "unanswerable",
      "question": "What is the syllabus for the machine learning elective?",
      "retrieved": [
-      "L0017",
       "S3-010",
+      "S2-007",
+      "S2-009",
+      "L0017",
       "S1-006",
-      "L0009",
-      "S1-001",
-      "L0010"
+      "L0009"
      ],
-     "summary_hits": 3,
+     "summary_hits": 4,
      "levels_used": {
-      "0": 3,
       "3": 1,
-      "1": 2
-     },
-     "refused": 1
+      "2": 2,
+      "0": 2,
+      "1": 1
+     }
     }
    ]
   },
@@ -1121,18 +1165,18 @@
    "metrics": {
     "specific_hit_rate": 0.9286,
     "specific_mrr": 0.7857,
-    "broad_coverage": 0.875,
-    "refusal_rate": 1.0,
-    "avg_summary_hits": 0.9231,
+    "broad_coverage": 0.55,
+    "refusal_rate": null,
+    "avg_summary_hits": 1.3077,
     "counts": {
      "specific": 14,
      "broad": 8,
      "unanswerable": 4
     }
    },
-   "seconds_total": 596.7,
-   "seconds_per_question": 22.95,
-   "answers_generated": "unanswerable",
+   "seconds_total": 1.0,
+   "seconds_per_question": 0.04,
+   "answers_generated": "none",
    "rows": [
     {
      "id": "s01",
@@ -1181,16 +1225,15 @@
      "question": "What armature resistance results after rewinding from lap to wave?",
      "retrieved": [
       "L0076",
-      "S2-009",
       "L0104",
       "L0166",
       "L0065",
-      "L0103"
+      "L0103",
+      "L0105"
      ],
-     "summary_hits": 1,
+     "summary_hits": 0,
      "levels_used": {
-      "0": 5,
-      "2": 1
+      "0": 6
      },
      "hit": 1,
      "rank": 1,
@@ -1205,13 +1248,13 @@
       "L0110",
       "S1-004",
       "L0178",
-      "S2-008",
-      "L0084"
+      "S1-001",
+      "S2-008"
      ],
-     "summary_hits": 2,
+     "summary_hits": 3,
      "levels_used": {
-      "0": 4,
-      "1": 1,
+      "0": 3,
+      "1": 2,
       "2": 1
      },
      "hit": 1,
@@ -1424,41 +1467,43 @@
     {
      "id": "b01",
      "category": "broad",
-     "question": "What topics does the EE2200 Electrical Machines quiz cover overall?",
+     "question": "Give me a revision list of every machine type and winding this quiz covers.",
      "retrieved": [
-      "L0160",
-      "S2-008",
-      "L0092",
       "S2-009",
-      "L0159",
-      "S3-010"
+      "S3-010",
+      "L0128",
+      "L0092",
+      "S2-008",
+      "L0104"
      ],
      "summary_hits": 3,
      "levels_used": {
-      "0": 3,
       "2": 2,
-      "3": 1
+      "3": 1,
+      "0": 3
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.8,
+     "missing": [
+      "wave winding"
+     ]
     },
     {
      "id": "b02",
      "category": "broad",
-     "question": "Which property methods suit polar mixtures with azeotropes, and which do not?",
+     "question": "Which Aspen blocks and separation tools are used across the problem sets?",
      "retrieved": [
-      "L0005",
-      "L0004",
       "S2-007",
-      "L0018",
       "L0001",
-      "S3-010"
+      "L0034",
+      "L0044",
+      "S1-006",
+      "L0008"
      ],
      "summary_hits": 2,
      "levels_used": {
-      "0": 4,
       "2": 1,
-      "3": 1
+      "0": 4,
+      "1": 1
      },
      "coverage": 1.0,
      "missing": []
@@ -1466,128 +1511,153 @@
     {
      "id": "b03",
      "category": "broad",
-     "question": "Give an overview of the parts of the Aspen Plus viva guide.",
+     "question": "What losses and machine behaviours do the DC machine questions test?",
      "retrieved": [
-      "S1-006",
-      "L0001",
-      "L0005",
-      "L0002",
-      "S1-003",
-      "L0034"
+      "S2-009",
+      "L0098",
+      "S2-008",
+      "S3-010",
+      "L0086",
+      "L0103"
      ],
-     "summary_hits": 2,
+     "summary_hits": 3,
      "levels_used": {
-      "1": 2,
-      "0": 4
+      "2": 2,
+      "0": 3,
+      "3": 1
      },
-     "coverage": 0.5,
+     "coverage": 0.6,
      "missing": [
-      "Numbers to remember"
+      "friction",
+      "brake"
      ]
     },
     {
      "id": "b04",
      "category": "broad",
-     "question": "What kinds of loss calculations appear across the DC machine questions?",
+     "question": "Across both of my courses, what are the main subject areas?",
      "retrieved": [
-      "S2-008",
-      "L0098",
-      "S1-004",
-      "S3-010",
-      "L0068",
-      "L0153"
+      "S2-007",
+      "L0005",
+      "S2-009",
+      "S1-003",
+      "L0026",
+      "L0054"
      ],
      "summary_hits": 3,
      "levels_used": {
-      "2": 1,
+      "2": 2,
       "0": 3,
-      "1": 1,
-      "3": 1
+      "1": 1
      },
-     "coverage": 0.5,
+     "coverage": 0.2,
      "missing": [
-      "friction + windage + core"
+      "induction motor",
+      "autotransformer",
+      "DSTWU",
+      "PT envelope"
      ]
     },
     {
      "id": "b05",
      "category": "broad",
-     "question": "Which distillation blocks are used across the problem sets, and what for?",
+     "question": "What should I know about the Aspen Plus workflow and column setup?",
      "retrieved": [
-      "L0044",
+      "S2-007",
       "S1-006",
-      "L0039",
-      "L0019",
-      "L0033",
-      "L0013"
+      "L0034",
+      "L0001",
+      "S3-010",
+      "L0054"
      ],
-     "summary_hits": 1,
+     "summary_hits": 3,
      "levels_used": {
-      "0": 5,
-      "1": 1
+      "2": 1,
+      "1": 1,
+      "0": 3,
+      "3": 1
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.4,
+     "missing": [
+      "reinitialize",
+      "subcooled",
+      "condenser"
+     ]
     },
     {
      "id": "b06",
      "category": "broad",
-     "question": "What should I revise about induction motor torque and slip?",
+     "question": "What phase-equilibrium topics should I revise for the viva?",
      "retrieved": [
-      "S1-004",
-      "L0113",
-      "L0061",
-      "S1-001",
-      "L0131",
-      "L0164"
+      "L0010",
+      "S1-006",
+      "L0001",
+      "S3-010",
+      "L0018",
+      "L0015"
      ],
      "summary_hits": 2,
      "levels_used": {
-      "1": 2,
-      "0": 4
+      "0": 4,
+      "1": 1,
+      "3": 1
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.4,
+     "missing": [
+      "tie line",
+      "cricondenbar",
+      "entrainer"
+     ]
     },
     {
      "id": "b07",
      "category": "broad",
-     "question": "Summarise what the Aspen problem sets 2, 3a and 3b involve.",
+     "question": "What do the quiz questions ask about torque, speed and winding type?",
      "retrieved": [
-      "L0001",
-      "L0014",
-      "L0008",
-      "S1-006",
-      "L0005",
-      "L0021"
+      "S3-010",
+      "S2-008",
+      "S2-009",
+      "L0104",
+      "L0076",
+      "S1-001"
      ],
-     "summary_hits": 1,
+     "summary_hits": 4,
      "levels_used": {
-      "0": 5,
+      "3": 1,
+      "2": 2,
+      "0": 2,
       "1": 1
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.6,
+     "missing": [
+      "synchronous speed",
+      "brake"
+     ]
     },
     {
      "id": "b08",
      "category": "broad",
-     "question": "Across both courses, what kinds of calculations am I expected to perform?",
+     "question": "Which DC machine configurations appear in the quiz?",
      "retrieved": [
-      "S2-007",
-      "L0153",
-      "L0100",
-      "L0041",
-      "L0134",
-      "L0101"
+      "S2-009",
+      "L0093",
+      "S3-010",
+      "S2-008",
+      "L0126",
+      "L0098"
      ],
-     "summary_hits": 1,
+     "summary_hits": 3,
      "levels_used": {
-      "2": 1,
-      "0": 5
+      "2": 2,
+      "0": 3,
+      "3": 1
      },
-     "coverage": 1.0,
-     "missing": []
+     "coverage": 0.4,
+     "missing": [
+      "series field",
+      "compound",
+      "wave winding"
+     ]
     },
     {
      "id": "u01",
@@ -1604,45 +1674,45 @@
      "summary_hits": 0,
      "levels_used": {
       "0": 6
-     },
-     "refused": 1
+     }
     },
     {
      "id": "u02",
      "category": "unanswerable",
      "question": "How much are the semester tuition fees for this course?",
      "retrieved": [
+      "S3-010",
       "L0045",
-      "L0098",
       "L0038",
-      "L0046",
+      "L0098",
       "L0037",
-      "L0044"
+      "L0046"
      ],
-     "summary_hits": 0,
+     "summary_hits": 1,
      "levels_used": {
-      "0": 6
-     },
-     "refused": 1
+      "3": 1,
+      "0": 5
+     }
     },
     {
      "id": "u03",
      "category": "unanswerable",
      "question": "Who is the head of the electrical engineering department?",
      "retrieved": [
+      "S1-001",
       "L0136",
       "S2-008",
-      "S2-009",
-      "L0102",
+      "S3-010",
       "L0068",
       "L0125"
      ],
-     "summary_hits": 2,
+     "summary_hits": 3,
      "levels_used": {
-      "0": 4,
-      "2": 2
-     },
-     "refused": 1
+      "1": 1,
+      "0": 3,
+      "2": 1,
+      "3": 1
+     }
     },
     {
      "id": "u04",
@@ -1651,16 +1721,1167 @@
      "retrieved": [
       "L0015",
       "L0098",
-      "L0009",
       "L0014",
+      "L0009",
       "L0010",
       "L0017"
      ],
      "summary_hits": 0,
      "levels_used": {
       "0": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "tree_penalty",
+   "settings": {
+    "mode": "tree",
+    "hybrid": false,
+    "dedupe": true,
+    "summary_penalty": 0.03
+   },
+   "top_k": 6,
+   "metrics": {
+    "specific_hit_rate": 1.0,
+    "specific_mrr": 0.7381,
+    "broad_coverage": 0.6,
+    "refusal_rate": null,
+    "avg_summary_hits": 0.9615,
+    "counts": {
+     "specific": 14,
+     "broad": 8,
+     "unanswerable": 4
+    }
+   },
+   "seconds_total": 0.4,
+   "seconds_per_question": 0.02,
+   "answers_generated": "none",
+   "rows": [
+    {
+     "id": "s01",
+     "category": "specific",
+     "question": "What is the combined friction, windage and core loss in the DC machine question?",
+     "retrieved": [
+      "L0171",
+      "L0064",
+      "L0111",
+      "L0065",
+      "L0137",
+      "L0133"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
      },
-     "refused": 1
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s02",
+     "category": "specific",
+     "question": "What generated EMF Eg is obtained for the long shunt connection?",
+     "retrieved": [
+      "L0170",
+      "L0068",
+      "L0063",
+      "L0140",
+      "L0160",
+      "L0092"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s03",
+     "category": "specific",
+     "question": "What armature resistance results after rewinding from lap to wave?",
+     "retrieved": [
+      "L0076",
+      "L0104",
+      "L0166",
+      "L0099",
+      "L0100",
+      "L0098"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s04",
+     "category": "specific",
+     "question": "What is the full-load slip of the induction motor?",
+     "retrieved": [
+      "L0147",
+      "L0079",
+      "L0110",
+      "L0113",
+      "L0178",
+      "L0103"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 3,
+     "reciprocal_rank": 0.3333333333333333
+    },
+    {
+     "id": "s05",
+     "category": "specific",
+     "question": "What rotor resistance must be added to get maximum starting torque?",
+     "retrieved": [
+      "L0080",
+      "L0148",
+      "L0116",
+      "L0077",
+      "L0081",
+      "L0146"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s06",
+     "category": "specific",
+     "question": "What is the slip at maximum torque as a percentage?",
+     "retrieved": [
+      "L0082",
+      "L0114",
+      "L0146",
+      "L0083",
+      "L0179",
+      "L0147"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s07",
+     "category": "specific",
+     "question": "What EMF does the wave winding produce in the EMF equation question?",
+     "retrieved": [
+      "L0135",
+      "L0074",
+      "L0076",
+      "L0136",
+      "L0104",
+      "L0099"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s08",
+     "category": "specific",
+     "question": "How is the armature copper loss calculated for the generator delivering 12 kW at 260 V?",
+     "retrieved": [
+      "L0139",
+      "L0137",
+      "L0142",
+      "L0094",
+      "L0133",
+      "L0098"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s09",
+     "category": "specific",
+     "question": "What does the F5 key do in Aspen Plus?",
+     "retrieved": [
+      "L0034",
+      "L0009",
+      "S1-006",
+      "L0001",
+      "L0026",
+      "L0010"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "1": 1
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s10",
+     "category": "specific",
+     "question": "What does Shift+F5 do in Aspen Plus?",
+     "retrieved": [
+      "L0034",
+      "L0009",
+      "L0026",
+      "L0010",
+      "L0147",
+      "S1-006"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "1": 1
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s11",
+     "category": "specific",
+     "question": "What are the cricondenbar and cricondentherm?",
+     "retrieved": [
+      "L0022",
+      "L0020",
+      "L0057",
+      "L0126",
+      "L0043",
+      "L0176"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s12",
+     "category": "specific",
+     "question": "What split does the decanter in Set 2 Problem 8 give?",
+     "retrieved": [
+      "L0012",
+      "L0033",
+      "L0014",
+      "L0181",
+      "L0038",
+      "L0058"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s13",
+     "category": "specific",
+     "question": "At what temperature does the water-cyclohexane azeotrope boil?",
+     "retrieved": [
+      "L0025",
+      "L0034",
+      "L0018",
+      "L0024",
+      "L0027",
+      "L0053"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s14",
+     "category": "specific",
+     "question": "Which azeotrope is the lowest boiler and why does that matter?",
+     "retrieved": [
+      "L0025",
+      "L0018",
+      "L0057",
+      "L0026",
+      "L0038",
+      "L0002"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "b01",
+     "category": "broad",
+     "question": "Give me a revision list of every machine type and winding this quiz covers.",
+     "retrieved": [
+      "S3-010",
+      "L0166",
+      "L0059",
+      "S2-008",
+      "L0099",
+      "L0092"
+     ],
+     "summary_hits": 2,
+     "levels_used": {
+      "3": 1,
+      "0": 4,
+      "2": 1
+     },
+     "coverage": 1.0,
+     "missing": []
+    },
+    {
+     "id": "b02",
+     "category": "broad",
+     "question": "Which Aspen blocks and separation tools are used across the problem sets?",
+     "retrieved": [
+      "S1-006",
+      "S2-007",
+      "L0034",
+      "L0001",
+      "L0005",
+      "L0028"
+     ],
+     "summary_hits": 2,
+     "levels_used": {
+      "1": 1,
+      "2": 1,
+      "0": 4
+     },
+     "coverage": 0.4,
+     "missing": [
+      "DSTWU",
+      "RadFrac",
+      "decanter"
+     ]
+    },
+    {
+     "id": "b03",
+     "category": "broad",
+     "question": "What losses and machine behaviours do the DC machine questions test?",
+     "retrieved": [
+      "L0098",
+      "S1-005",
+      "S3-010",
+      "L0094",
+      "S2-009",
+      "L0059"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "0": 3,
+      "1": 1,
+      "3": 1,
+      "2": 1
+     },
+     "coverage": 0.6,
+     "missing": [
+      "brake",
+      "equivalent circuit"
+     ]
+    },
+    {
+     "id": "b04",
+     "category": "broad",
+     "question": "Across both of my courses, what are the main subject areas?",
+     "retrieved": [
+      "S3-010",
+      "S2-009",
+      "S2-007",
+      "L0017",
+      "L0186",
+      "L0015"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "3": 1,
+      "2": 2,
+      "0": 3
+     },
+     "coverage": 0.8,
+     "missing": [
+      "PT envelope"
+     ]
+    },
+    {
+     "id": "b05",
+     "category": "broad",
+     "question": "What should I know about the Aspen Plus workflow and column setup?",
+     "retrieved": [
+      "S1-006",
+      "L0034",
+      "S2-007",
+      "S3-010",
+      "L0001",
+      "L0054"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "1": 1,
+      "0": 3,
+      "2": 1,
+      "3": 1
+     },
+     "coverage": 0.4,
+     "missing": [
+      "reinitialize",
+      "subcooled",
+      "condenser"
+     ]
+    },
+    {
+     "id": "b06",
+     "category": "broad",
+     "question": "What phase-equilibrium topics should I revise for the viva?",
+     "retrieved": [
+      "L0001",
+      "L0021",
+      "S2-007",
+      "L0005",
+      "L0018",
+      "L0015"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "2": 1
+     },
+     "coverage": 0.8,
+     "missing": [
+      "entrainer"
+     ]
+    },
+    {
+     "id": "b07",
+     "category": "broad",
+     "question": "What do the quiz questions ask about torque, speed and winding type?",
+     "retrieved": [
+      "L0114",
+      "L0131",
+      "L0175",
+      "L0129",
+      "L0061",
+      "S2-009"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "2": 1
+     },
+     "coverage": 0.4,
+     "missing": [
+      "synchronous speed",
+      "brake",
+      "lap winding"
+     ]
+    },
+    {
+     "id": "b08",
+     "category": "broad",
+     "question": "Which DC machine configurations appear in the quiz?",
+     "retrieved": [
+      "L0059",
+      "L0092",
+      "L0093",
+      "L0149",
+      "L0151",
+      "S2-009"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "2": 1
+     },
+     "coverage": 0.4,
+     "missing": [
+      "series field",
+      "compound",
+      "wave winding"
+     ]
+    },
+    {
+     "id": "u01",
+     "category": "unanswerable",
+     "question": "What is the attendance policy for missing a lab session?",
+     "retrieved": [
+      "L0125",
+      "L0010",
+      "L0159",
+      "L0014",
+      "L0098",
+      "L0045"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     }
+    },
+    {
+     "id": "u02",
+     "category": "unanswerable",
+     "question": "How much are the semester tuition fees for this course?",
+     "retrieved": [
+      "S3-010",
+      "L0186",
+      "L0098",
+      "L0124",
+      "L0045",
+      "L0013"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "3": 1,
+      "0": 5
+     }
+    },
+    {
+     "id": "u03",
+     "category": "unanswerable",
+     "question": "Who is the head of the electrical engineering department?",
+     "retrieved": [
+      "L0161",
+      "S2-008",
+      "L0059",
+      "L0092",
+      "S1-001",
+      "L0184"
+     ],
+     "summary_hits": 2,
+     "levels_used": {
+      "0": 4,
+      "2": 1,
+      "1": 1
+     }
+    },
+    {
+     "id": "u04",
+     "category": "unanswerable",
+     "question": "What is the syllabus for the machine learning elective?",
+     "retrieved": [
+      "S3-010",
+      "S2-007",
+      "S2-009",
+      "L0017",
+      "L0009",
+      "S1-006"
+     ],
+     "summary_hits": 4,
+     "levels_used": {
+      "3": 1,
+      "2": 2,
+      "0": 2,
+      "1": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "tree_balanced",
+   "settings": {
+    "mode": "tree",
+    "hybrid": false,
+    "dedupe": true,
+    "max_summaries": 3
+   },
+   "top_k": 6,
+   "metrics": {
+    "specific_hit_rate": 1.0,
+    "specific_mrr": 0.7262,
+    "broad_coverage": 0.6,
+    "refusal_rate": null,
+    "avg_summary_hits": 1.2692,
+    "counts": {
+     "specific": 14,
+     "broad": 8,
+     "unanswerable": 4
+    }
+   },
+   "seconds_total": 0.4,
+   "seconds_per_question": 0.01,
+   "answers_generated": "none",
+   "rows": [
+    {
+     "id": "s01",
+     "category": "specific",
+     "question": "What is the combined friction, windage and core loss in the DC machine question?",
+     "retrieved": [
+      "L0171",
+      "L0064",
+      "L0111",
+      "L0065",
+      "S1-005",
+      "L0137"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "1": 1
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s02",
+     "category": "specific",
+     "question": "What generated EMF Eg is obtained for the long shunt connection?",
+     "retrieved": [
+      "L0170",
+      "L0068",
+      "L0063",
+      "L0140",
+      "L0160",
+      "S1-005"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "1": 1
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s03",
+     "category": "specific",
+     "question": "What armature resistance results after rewinding from lap to wave?",
+     "retrieved": [
+      "L0076",
+      "L0104",
+      "L0166",
+      "L0099",
+      "L0100",
+      "L0098"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s04",
+     "category": "specific",
+     "question": "What is the full-load slip of the induction motor?",
+     "retrieved": [
+      "L0147",
+      "L0079",
+      "L0110",
+      "S1-004",
+      "L0113",
+      "L0178"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "1": 1
+     },
+     "hit": 1,
+     "rank": 3,
+     "reciprocal_rank": 0.3333333333333333
+    },
+    {
+     "id": "s05",
+     "category": "specific",
+     "question": "What rotor resistance must be added to get maximum starting torque?",
+     "retrieved": [
+      "L0080",
+      "L0148",
+      "L0116",
+      "L0077",
+      "L0081",
+      "L0146"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s06",
+     "category": "specific",
+     "question": "What is the slip at maximum torque as a percentage?",
+     "retrieved": [
+      "L0082",
+      "L0114",
+      "L0146",
+      "L0083",
+      "L0179",
+      "L0147"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s07",
+     "category": "specific",
+     "question": "What EMF does the wave winding produce in the EMF equation question?",
+     "retrieved": [
+      "L0135",
+      "L0074",
+      "L0076",
+      "L0136",
+      "L0104",
+      "L0099"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s08",
+     "category": "specific",
+     "question": "How is the armature copper loss calculated for the generator delivering 12 kW at 260 V?",
+     "retrieved": [
+      "L0139",
+      "L0137",
+      "L0142",
+      "L0094",
+      "L0133",
+      "L0098"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s09",
+     "category": "specific",
+     "question": "What does the F5 key do in Aspen Plus?",
+     "retrieved": [
+      "L0034",
+      "S1-006",
+      "L0009",
+      "L0001",
+      "L0026",
+      "L0010"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "1": 1
+     },
+     "hit": 1,
+     "rank": 3,
+     "reciprocal_rank": 0.3333333333333333
+    },
+    {
+     "id": "s10",
+     "category": "specific",
+     "question": "What does Shift+F5 do in Aspen Plus?",
+     "retrieved": [
+      "L0034",
+      "L0009",
+      "L0026",
+      "S1-006",
+      "L0010",
+      "L0147"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "1": 1
+     },
+     "hit": 1,
+     "rank": 2,
+     "reciprocal_rank": 0.5
+    },
+    {
+     "id": "s11",
+     "category": "specific",
+     "question": "What are the cricondenbar and cricondentherm?",
+     "retrieved": [
+      "L0022",
+      "L0020",
+      "L0057",
+      "L0126",
+      "S1-002",
+      "L0043"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "1": 1
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s12",
+     "category": "specific",
+     "question": "What split does the decanter in Set 2 Problem 8 give?",
+     "retrieved": [
+      "L0012",
+      "L0033",
+      "L0014",
+      "L0181",
+      "L0038",
+      "L0058"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s13",
+     "category": "specific",
+     "question": "At what temperature does the water-cyclohexane azeotrope boil?",
+     "retrieved": [
+      "L0025",
+      "L0034",
+      "L0018",
+      "L0024",
+      "L0027",
+      "L0053"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "s14",
+     "category": "specific",
+     "question": "Which azeotrope is the lowest boiler and why does that matter?",
+     "retrieved": [
+      "L0025",
+      "L0018",
+      "L0057",
+      "L0026",
+      "L0038",
+      "L0002"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     },
+     "hit": 1,
+     "rank": 1,
+     "reciprocal_rank": 1.0
+    },
+    {
+     "id": "b01",
+     "category": "broad",
+     "question": "Give me a revision list of every machine type and winding this quiz covers.",
+     "retrieved": [
+      "S3-010",
+      "L0166",
+      "S2-008",
+      "S2-009",
+      "L0059",
+      "L0099"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "3": 1,
+      "0": 3,
+      "2": 2
+     },
+     "coverage": 1.0,
+     "missing": []
+    },
+    {
+     "id": "b02",
+     "category": "broad",
+     "question": "Which Aspen blocks and separation tools are used across the problem sets?",
+     "retrieved": [
+      "S1-006",
+      "S2-007",
+      "L0034",
+      "L0001",
+      "L0005",
+      "L0028"
+     ],
+     "summary_hits": 2,
+     "levels_used": {
+      "1": 1,
+      "2": 1,
+      "0": 4
+     },
+     "coverage": 0.4,
+     "missing": [
+      "DSTWU",
+      "RadFrac",
+      "decanter"
+     ]
+    },
+    {
+     "id": "b03",
+     "category": "broad",
+     "question": "What losses and machine behaviours do the DC machine questions test?",
+     "retrieved": [
+      "S1-005",
+      "S3-010",
+      "L0098",
+      "S2-009",
+      "L0094",
+      "L0059"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "1": 1,
+      "3": 1,
+      "0": 3,
+      "2": 1
+     },
+     "coverage": 0.6,
+     "missing": [
+      "brake",
+      "equivalent circuit"
+     ]
+    },
+    {
+     "id": "b04",
+     "category": "broad",
+     "question": "Across both of my courses, what are the main subject areas?",
+     "retrieved": [
+      "S3-010",
+      "S2-009",
+      "S2-007",
+      "L0017",
+      "L0186",
+      "L0015"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "3": 1,
+      "2": 2,
+      "0": 3
+     },
+     "coverage": 0.8,
+     "missing": [
+      "PT envelope"
+     ]
+    },
+    {
+     "id": "b05",
+     "category": "broad",
+     "question": "What should I know about the Aspen Plus workflow and column setup?",
+     "retrieved": [
+      "S1-006",
+      "S2-007",
+      "S3-010",
+      "L0034",
+      "L0001",
+      "L0054"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "0": 3
+     },
+     "coverage": 0.4,
+     "missing": [
+      "reinitialize",
+      "subcooled",
+      "condenser"
+     ]
+    },
+    {
+     "id": "b06",
+     "category": "broad",
+     "question": "What phase-equilibrium topics should I revise for the viva?",
+     "retrieved": [
+      "L0001",
+      "S2-007",
+      "L0021",
+      "L0005",
+      "L0018",
+      "S1-006"
+     ],
+     "summary_hits": 2,
+     "levels_used": {
+      "0": 4,
+      "2": 1,
+      "1": 1
+     },
+     "coverage": 0.8,
+     "missing": [
+      "entrainer"
+     ]
+    },
+    {
+     "id": "b07",
+     "category": "broad",
+     "question": "What do the quiz questions ask about torque, speed and winding type?",
+     "retrieved": [
+      "S2-009",
+      "S3-010",
+      "L0114",
+      "L0131",
+      "L0175",
+      "L0129"
+     ],
+     "summary_hits": 2,
+     "levels_used": {
+      "2": 1,
+      "3": 1,
+      "0": 4
+     },
+     "coverage": 0.4,
+     "missing": [
+      "synchronous speed",
+      "brake",
+      "lap winding"
+     ]
+    },
+    {
+     "id": "b08",
+     "category": "broad",
+     "question": "Which DC machine configurations appear in the quiz?",
+     "retrieved": [
+      "L0059",
+      "L0092",
+      "S2-009",
+      "L0093",
+      "L0149",
+      "L0151"
+     ],
+     "summary_hits": 1,
+     "levels_used": {
+      "0": 5,
+      "2": 1
+     },
+     "coverage": 0.4,
+     "missing": [
+      "series field",
+      "compound",
+      "wave winding"
+     ]
+    },
+    {
+     "id": "u01",
+     "category": "unanswerable",
+     "question": "What is the attendance policy for missing a lab session?",
+     "retrieved": [
+      "L0125",
+      "L0010",
+      "L0159",
+      "L0014",
+      "L0098",
+      "L0045"
+     ],
+     "summary_hits": 0,
+     "levels_used": {
+      "0": 6
+     }
+    },
+    {
+     "id": "u02",
+     "category": "unanswerable",
+     "question": "How much are the semester tuition fees for this course?",
+     "retrieved": [
+      "S3-010",
+      "S2-007",
+      "L0186",
+      "L0098",
+      "L0124",
+      "L0045"
+     ],
+     "summary_hits": 2,
+     "levels_used": {
+      "3": 1,
+      "2": 1,
+      "0": 4
+     }
+    },
+    {
+     "id": "u03",
+     "category": "unanswerable",
+     "question": "Who is the head of the electrical engineering department?",
+     "retrieved": [
+      "S2-008",
+      "S1-001",
+      "L0161",
+      "S1-002",
+      "L0059",
+      "L0092"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "2": 1,
+      "1": 2,
+      "0": 3
+     }
+    },
+    {
+     "id": "u04",
+     "category": "unanswerable",
+     "question": "What is the syllabus for the machine learning elective?",
+     "retrieved": [
+      "S3-010",
+      "S2-007",
+      "S2-009",
+      "L0017",
+      "L0009",
+      "L0010"
+     ],
+     "summary_hits": 3,
+     "levels_used": {
+      "3": 1,
+      "2": 2,
+      "0": 3
+     }
     }
    ]
   }

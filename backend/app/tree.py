@@ -65,6 +65,18 @@ def soft_cluster(vectors: np.ndarray) -> list[list[int]]:
         return [list(range(n_samples))]
 
     points = reduce_dimensions(vectors)
+
+    if config.CLUSTER_TARGET_SIZE > 0:
+        # Aim for clusters of about this many nodes instead of asking BIC.
+        wanted = max(2, round(n_samples / config.CLUSTER_TARGET_SIZE))
+        cluster_count = min(wanted, n_samples - 1)
+        if cluster_count < 2:
+            return [list(range(n_samples))]
+        model = GaussianMixture(n_components=cluster_count, random_state=42,
+                                covariance_type="diag")
+        model.fit(points)
+        return assign_members(model.predict_proba(points), n_samples, cluster_count)
+
     max_clusters = min(config.MAX_CLUSTERS_PER_LEVEL, n_samples // 2)
     if max_clusters < 2:
         return [list(range(n_samples))]
@@ -75,8 +87,11 @@ def soft_cluster(vectors: np.ndarray) -> list[list[int]]:
 
     model = GaussianMixture(n_components=cluster_count, random_state=42, covariance_type="diag")
     model.fit(points)
-    probabilities = model.predict_proba(points)
+    return assign_members(model.predict_proba(points), n_samples, cluster_count)
 
+
+def assign_members(probabilities, n_samples: int, cluster_count: int) -> list[list[int]]:
+    """Soft assignment: a node joins every cluster it plausibly belongs to."""
     members = []
     for cluster in range(cluster_count):
         members.append([])
@@ -98,7 +113,8 @@ def soft_cluster(vectors: np.ndarray) -> list[list[int]]:
     return kept
 
 
-def build_tree(leaves: list[dict], embedder, progress=None) -> tuple[list[dict], np.ndarray]:
+def build_tree(leaves: list[dict], embedder, progress=None,
+               use_provider: str = None) -> tuple[list[dict], np.ndarray]:
     """Grow summary levels on top of the leaves.
 
     Returns every node (all levels) and the matching embedding matrix, in the
@@ -153,7 +169,7 @@ def build_tree(leaves: list[dict], embedder, progress=None) -> tuple[list[dict],
 
             summary_counter = summary_counter + 1
             summary_started = time.time()
-            summary_text = llm.summarize(member_texts)
+            summary_text = llm.summarize(member_texts, level=level, use_provider=use_provider)
             report("  summary " + str(summary_counter) + " of cluster with "
                    + str(len(group)) + " nodes took "
                    + str(round(time.time() - summary_started, 1)) + "s")

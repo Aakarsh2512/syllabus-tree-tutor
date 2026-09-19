@@ -4,6 +4,10 @@ data/raw/*
 data/index/*
 !data/index/.gitkeep
 
+# Uploaded corpora: someone else's PDFs and their indexes
+data/corpora/
+data/index_backup*/
+
 # Python
 .venv/
 __pycache__/

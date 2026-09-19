@@ -31,6 +31,17 @@ SUMMARY_INSTRUCTION = (
     "results in them. Start directly with the content, with no preamble.\n\n"
 )
 
+# Higher levels summarise summaries. Without a different instruction a small
+# model tends to copy the longest child verbatim, which makes the upper levels
+# of the tree worthless: a level-2 node must describe the whole span, not
+# repeat one section of it.
+HIGHER_LEVEL_INSTRUCTION = (
+    "Below are summaries of DIFFERENT sections of one course. Write a single overview of "
+    "about 150 words that covers ALL of the sections together. Name the topics each "
+    "section deals with. Do not copy any sentence from the input, and do not focus on "
+    "one section at the expense of the others. Start directly with the content.\n\n"
+)
+
 
 # ---------------------------------------------------------------- offline ----
 
@@ -123,7 +134,7 @@ def ollama_request(payload: dict, stream: bool):
     request = urllib.request.Request(
         url, data=body, headers={"Content-Type": "application/json"}
     )
-    return urllib.request.urlopen(request, timeout=300)
+    return urllib.request.urlopen(request, timeout=config.OLLAMA_TIMEOUT)
 
 
 def ollama_complete(prompt: str, system: str, max_tokens: int, temperature: float) -> str:
@@ -240,8 +251,9 @@ def provider() -> str:
     return config.LLM_PROVIDER
 
 
-def complete(prompt: str, system: str = "", max_tokens: int = 700, temperature: float = 0.0) -> str:
-    name = provider()
+def complete(prompt: str, system: str = "", max_tokens: int = 700,
+             temperature: float = 0.0, use_provider: str = None) -> str:
+    name = use_provider if use_provider is not None else provider()
     if name == "ollama":
         return ollama_complete(prompt, system, max_tokens, temperature)
     if name == "anthropic":
@@ -251,8 +263,9 @@ def complete(prompt: str, system: str = "", max_tokens: int = 700, temperature: 
     return offline_answer(prompt)
 
 
-def stream_complete(prompt: str, system: str = "", max_tokens: int = 700, temperature: float = 0.0):
-    name = provider()
+def stream_complete(prompt: str, system: str = "", max_tokens: int = 700,
+                    temperature: float = 0.0, use_provider: str = None):
+    name = use_provider if use_provider is not None else provider()
     try:
         if name == "ollama":
             for piece in ollama_stream(prompt, system, max_tokens, temperature):
@@ -280,20 +293,28 @@ def stream_complete(prompt: str, system: str = "", max_tokens: int = 700, temper
 fallbacks = []
 
 
-def summarize(texts: list[str]) -> str:
-    """Summarize the passages of one cluster into a parent node's text."""
+def summarize(texts: list[str], level: int = 1, use_provider: str = None) -> str:
+    """Summarize the passages of one cluster into a parent node's text.
+
+    `level` is the level of the node being written: 1 means its children are
+    original chunks, 2 and above means its children are themselves summaries,
+    which needs a different instruction.
+    """
     joined = "\n\n---\n\n".join(texts)
     if len(joined) > config.SUMMARY_INPUT_CHARS:
         joined = joined[: config.SUMMARY_INPUT_CHARS]
 
-    if provider() == "offline":
+    chosen = use_provider if use_provider is not None else provider()
+    if chosen == "offline":
         return extractive_summary(joined, max_sentences=6)
+
+    instruction = SUMMARY_INSTRUCTION if level <= 1 else HIGHER_LEVEL_INSTRUCTION
 
     summary = ""
     reason = ""
     try:
         summary = complete(
-            SUMMARY_INSTRUCTION + joined,
+            instruction + joined,
             system=SUMMARY_SYSTEM,
             max_tokens=400,
             temperature=0.0,

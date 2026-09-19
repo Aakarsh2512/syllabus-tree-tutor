@@ -12,14 +12,14 @@
 {"id": "s12", "category": "specific", "question": "What split does the decanter in Set 2 Problem 8 give?", "evidence_any": ["59.3 % / 40.7 %"]}
 {"id": "s13", "category": "specific", "question": "At what temperature does the water-cyclohexane azeotrope boil?", "evidence_any": ["cyclohexane (heterogeneous) at 68.8"]}
 {"id": "s14", "category": "specific", "question": "Which azeotrope is the lowest boiler and why does that matter?", "evidence_any": ["The ternary azeotrope at 62"]}
-{"id": "b01", "category": "broad", "question": "Give me a revision list of every machine type and winding this quiz covers.", "evidence_all": ["lap winding", "wave winding", "autotransformer", "induction motor", "shunt generator"], "design": "spread over 5 chunks; no single chunk holds more than one term"}
-{"id": "b02", "category": "broad", "question": "Which Aspen blocks and separation tools are used across the problem sets?", "evidence_all": ["DSTWU", "RadFrac", "decanter", "entrainer", "tie line"], "counter_case": true, "design": "deliberately included although no summary mentions these block names: a broad question the tree should NOT win"}
-{"id": "b03", "category": "broad", "question": "What losses and machine behaviours do the DC machine questions test?", "evidence_all": ["friction", "armature reaction", "brake", "back emf", "equivalent circuit"], "design": "spread over 3 chunks"}
-{"id": "b04", "category": "broad", "question": "Across both of my courses, what are the main subject areas?", "evidence_all": ["induction motor", "autotransformer", "DSTWU", "azeotrope", "PT envelope"], "design": "spans both documents; genuinely global"}
-{"id": "b05", "category": "broad", "question": "What should I know about the Aspen Plus workflow and column setup?", "evidence_all": ["reinitialize", "subcooled", "condenser", "flash", "property method"], "design": "spread over 3 chunks"}
-{"id": "b06", "category": "broad", "question": "What phase-equilibrium topics should I revise for the viva?", "evidence_all": ["ternary", "tie line", "cricondenbar", "Txy", "entrainer"], "design": "spread over 3 chunks"}
-{"id": "b07", "category": "broad", "question": "What do the quiz questions ask about torque, speed and winding type?", "evidence_all": ["maximum torque", "synchronous speed", "back emf", "brake", "lap winding"], "design": "spread over 3 chunks; max 2 terms in any one chunk"}
-{"id": "b08", "category": "broad", "question": "Which DC machine configurations appear in the quiz?", "evidence_all": ["shunt generator", "series field", "compound", "wave winding", "armature reaction"], "design": "spread over 3 chunks"}
+{"id": "b01", "category": "broad", "question": "What topics does the EE2200 Electrical Machines quiz cover overall?", "evidence_all": ["Induction Motors", "Electrical Machines"]}
+{"id": "b02", "category": "broad", "question": "Which property methods suit polar mixtures with azeotropes, and which do not?", "evidence_all": ["NRTL", "PENG-ROB"]}
+{"id": "b03", "category": "broad", "question": "Give an overview of the parts of the Aspen Plus viva guide.", "evidence_all": ["Core concepts", "Numbers to remember"]}
+{"id": "b04", "category": "broad", "question": "What kinds of loss calculations appear across the DC machine questions?", "evidence_all": ["Armature Cu loss", "friction + windage + core"]}
+{"id": "b05", "category": "broad", "question": "Which distillation blocks are used across the problem sets, and what for?", "evidence_all": ["DSTWU", "RadFrac"]}
+{"id": "b06", "category": "broad", "question": "What should I revise about induction motor torque and slip?", "evidence_all": ["slip", "torque"]}
+{"id": "b07", "category": "broad", "question": "Summarise what the Aspen problem sets 2, 3a and 3b involve.", "evidence_all": ["Problem Sets 2, 3a and 3b", "Set 3b"]}
+{"id": "b08", "category": "broad", "question": "Across both courses, what kinds of calculations am I expected to perform?", "evidence_all": ["Step 1", "Step 2"]}
 {"id": "u01", "category": "unanswerable", "question": "What is the attendance policy for missing a lab session?", "expected_refusal": true}
 {"id": "u02", "category": "unanswerable", "question": "How much are the semester tuition fees for this course?", "expected_refusal": true}
 {"id": "u03", "category": "unanswerable", "question": "Who is the head of the electrical engineering department?", "expected_refusal": true}

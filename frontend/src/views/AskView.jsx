@@ -13,7 +13,7 @@ const EXAMPLES = [
   "What should I revise about induction motor slip?",
 ];
 
-export default function AskView({ onRetrieved, llm, initialQuestion }) {
+export default function AskView({ onRetrieved, llm, initialQuestion, corpusId }) {
   const [question, setQuestion] = useState(initialQuestion || "");
   const [mode, setMode] = useState("tree");
   const [hybrid, setHybrid] = useState(false);
@@ -41,7 +41,7 @@ export default function AskView({ onRetrieved, llm, initialQuestion }) {
 
     try {
       await askStream(
-        { question: asked, mode: mode, hybrid: hybrid },
+        { question: asked, mode: mode, hybrid: hybrid, corpus_id: corpusId },
         {
           onMeta: function (payload) {
             setHits(payload.hits);

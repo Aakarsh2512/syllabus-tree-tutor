@@ -89,6 +89,8 @@ def score_item(item: dict, result: dict) -> dict:
         row["coverage"] = found / len(item["evidence_all"])
         row["missing"] = missing
 
+    elif result["answer"] == "" and result.get("no_answer_generated") is True:
+        pass                                  # refusal cannot be judged
     else:
         answer_text = normalize(result["answer"])
         refused = False
@@ -116,7 +118,9 @@ def summarize_rows(rows: list[dict]) -> dict:
         "specific_hit_rate": average([row["hit"] for row in specific]),
         "specific_mrr": average([row["reciprocal_rank"] for row in specific]),
         "broad_coverage": average([row["coverage"] for row in broad]),
-        "refusal_rate": average([row["refused"] for row in unanswerable]),
+        "refusal_rate": (average([row["refused"] for row in unanswerable])
+                         if len(unanswerable) > 0 and "refused" in unanswerable[0]
+                         else None),
         "avg_summary_hits": average([row["summary_hits"] for row in rows]),
         "counts": {
             "specific": len(specific),
@@ -130,6 +134,10 @@ RUN_SETTINGS = {
     "flat": {"mode": "flat", "hybrid": False, "dedupe": True},
     "tree": {"mode": "tree", "hybrid": False, "dedupe": True},
     "tree_hybrid": {"mode": "tree", "hybrid": True, "dedupe": True},
+    "tree_penalty": {"mode": "tree", "hybrid": False, "dedupe": True, "summary_penalty": 0.03},
+    # Cap summaries at half the slots, so chunks keep the rest.
+    "tree_balanced": {"mode": "tree", "hybrid": False, "dedupe": True, "max_summaries": 3},
+    "tree_balanced_2": {"mode": "tree", "hybrid": False, "dedupe": True, "max_summaries": 2},
     "tree_no_dedupe": {"mode": "tree", "hybrid": False, "dedupe": False},
     "flat_no_dedupe": {"mode": "flat", "hybrid": False, "dedupe": False},
 }
@@ -142,9 +150,12 @@ def retrieval_only(question: str, settings: dict, top_k: int) -> dict:
         mode=settings["mode"],
         hybrid=settings["hybrid"],
         dedupe=settings["dedupe"],
+        summary_penalty=settings.get("summary_penalty"),
+        max_summaries=settings.get("max_summaries"),
         top_k=top_k,
     )
-    return {"hits": found["hits"], "trace": found["trace"], "answer": ""}
+    return {"hits": found["hits"], "trace": found["trace"], "answer": "",
+            "no_answer_generated": True}
 
 
 def run_one(name: str, golden: list[dict], top_k: int, answers: str) -> dict:
@@ -162,6 +173,8 @@ def run_one(name: str, golden: list[dict], top_k: int, answers: str) -> dict:
                 mode=settings["mode"],
                 hybrid=settings["hybrid"],
                 dedupe=settings["dedupe"],
+                summary_penalty=settings.get("summary_penalty"),
+                max_summaries=settings.get("max_summaries"),
                 top_k=top_k,
             )
         else:
@@ -183,6 +196,13 @@ def run_one(name: str, golden: list[dict], top_k: int, answers: str) -> dict:
     }
 
 
+def fmt(value) -> str:
+    """Metrics that were not measured print as a dash, never as 0.000."""
+    if value is None:
+        return "  -  "
+    return "%.3f" % value
+
+
 def write_markdown(results: dict, path: Path) -> None:
     lines = []
     lines.append("# Evaluation results")
@@ -201,12 +221,12 @@ def write_markdown(results: dict, path: Path) -> None:
     for run in results["runs"]:
         metrics = run["metrics"]
         lines.append("| `" + run["name"] + "` | "
-                     + f"{metrics['specific_hit_rate']:.3f} | "
-                     + f"{metrics['specific_mrr']:.3f} | "
-                     + f"{metrics['broad_coverage']:.3f} | "
-                     + f"{metrics['refusal_rate']:.3f} | "
-                     + f"{metrics['avg_summary_hits']:.2f} | "
-                     + f"{run['seconds_per_question']:.2f} |")
+                     + fmt(metrics["specific_hit_rate"]) + " | "
+                     + fmt(metrics["specific_mrr"]) + " | "
+                     + fmt(metrics["broad_coverage"]) + " | "
+                     + fmt(metrics["refusal_rate"]) + " | "
+                     + ("%.2f" % metrics["avg_summary_hits"]) + " | "
+                     + ("%.2f" % run["seconds_per_question"]) + " |")
     lines.append("")
     lines.append("Metric meanings are in `eval/run_eval.py`.")
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -264,9 +284,10 @@ def main() -> None:
     print("-" * len(header))
     for run in runs:
         metrics = run["metrics"]
-        print(f"{run['name']:16} {metrics['specific_hit_rate']:>11.3f} "
-              f"{metrics['specific_mrr']:>9.3f} {metrics['broad_coverage']:>10.3f} "
-              f"{metrics['refusal_rate']:>8.3f} {metrics['avg_summary_hits']:>7.2f}")
+        print("%-16s %11s %9s %10s %8s %7.2f" % (
+            run["name"], fmt(metrics["specific_hit_rate"]), fmt(metrics["specific_mrr"]),
+            fmt(metrics["broad_coverage"]), fmt(metrics["refusal_rate"]),
+            metrics["avg_summary_hits"]))
     print()
     print("wrote", out_json.name, "and results.md")
 

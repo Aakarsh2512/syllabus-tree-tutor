@@ -62,8 +62,12 @@ def check_citations(answer: str, hits: list[dict]) -> dict:
 
 
 def answer(question: str, mode: str = "tree", hybrid: bool = False, top_k: int = None,
-           dedupe: bool = True) -> dict:
-    found = retrieve.search(question, mode=mode, hybrid=hybrid, top_k=top_k, dedupe=dedupe)
+           dedupe: bool = True, summary_penalty: float = None,
+           max_summaries: int = None, corpus_id: str = None,
+           answer_provider: str = None) -> dict:
+    found = retrieve.search(question, mode=mode, hybrid=hybrid, top_k=top_k, dedupe=dedupe,
+                            summary_penalty=summary_penalty, max_summaries=max_summaries,
+                            corpus_id=corpus_id)
     hits = found["hits"]
     if len(hits) == 0:
         return {
@@ -75,7 +79,8 @@ def answer(question: str, mode: str = "tree", hybrid: bool = False, top_k: int =
         }
 
     prompt = build_prompt(question, hits)
-    text = llm.complete(prompt, system=ANSWER_SYSTEM, max_tokens=700, temperature=0.0)
+    text = llm.complete(prompt, system=ANSWER_SYSTEM, max_tokens=config.ANSWER_MAX_TOKENS,
+                        temperature=0.0, use_provider=answer_provider)
 
     return {
         "question": question,
@@ -83,16 +88,19 @@ def answer(question: str, mode: str = "tree", hybrid: bool = False, top_k: int =
         "hits": hits,
         "trace": found["trace"],
         "citations": check_citations(text, hits),
-        "provider": llm.provider(),
+        "provider": answer_provider or llm.provider(),
     }
 
 
 def answer_stream(question: str, mode: str = "tree", hybrid: bool = False, top_k: int = None,
-                  dedupe: bool = True):
+                  dedupe: bool = True, corpus_id: str = None,
+                  answer_provider: str = None):
     """Yield (event_name, payload) pairs: the retrieval first, then the text."""
-    found = retrieve.search(question, mode=mode, hybrid=hybrid, top_k=top_k, dedupe=dedupe)
+    found = retrieve.search(question, mode=mode, hybrid=hybrid, top_k=top_k, dedupe=dedupe,
+                            corpus_id=corpus_id)
     hits = found["hits"]
-    yield "meta", {"hits": hits, "trace": found["trace"], "provider": llm.provider()}
+    yield "meta", {"hits": hits, "trace": found["trace"],
+                   "provider": answer_provider or llm.provider()}
 
     if len(hits) == 0:
         yield "text", {"text": "The index is empty. Add PDFs to data/raw and rebuild."}
@@ -101,7 +109,9 @@ def answer_stream(question: str, mode: str = "tree", hybrid: bool = False, top_k
 
     prompt = build_prompt(question, hits)
     collected = ""
-    for piece in llm.stream_complete(prompt, system=ANSWER_SYSTEM, max_tokens=700, temperature=0.0):
+    for piece in llm.stream_complete(prompt, system=ANSWER_SYSTEM,
+                                     max_tokens=config.ANSWER_MAX_TOKENS,
+                                     temperature=0.0, use_provider=answer_provider):
         collected = collected + piece
         yield "text", {"text": piece}
 
@@ -109,10 +119,13 @@ def answer_stream(question: str, mode: str = "tree", hybrid: bool = False, top_k
 
 
 def compare(question: str, hybrid: bool = False, top_k: int = None,
-            dedupe: bool = True) -> dict:
+            dedupe: bool = True, corpus_id: str = None,
+            answer_provider: str = None) -> dict:
     """The same question answered by the baseline and by the tree."""
-    flat = answer(question, mode="flat", hybrid=hybrid, top_k=top_k, dedupe=dedupe)
-    tree = answer(question, mode="tree", hybrid=hybrid, top_k=top_k, dedupe=dedupe)
+    flat = answer(question, mode="flat", hybrid=hybrid, top_k=top_k, dedupe=dedupe,
+                  corpus_id=corpus_id, answer_provider=answer_provider)
+    tree = answer(question, mode="tree", hybrid=hybrid, top_k=top_k, dedupe=dedupe,
+                  corpus_id=corpus_id, answer_provider=answer_provider)
     overlap = set(flat["trace"]["retrieved_ids"]) & set(tree["trace"]["retrieved_ids"])
     return {
         "question": question,
@@ -121,3 +134,38 @@ def compare(question: str, hybrid: bool = False, top_k: int = None,
         "shared_nodes": sorted(overlap),
         "shared_count": len(overlap),
     }
+
+
+def compare_stream(question: str, hybrid: bool = False, top_k: int = None,
+                   dedupe: bool = True, corpus_id: str = None,
+                   answer_provider: str = None):
+    """Both retrievers, streamed.
+
+    Retrieval is milliseconds, generation is minutes on a local CPU model, so
+    both sets of passages go out first and the answers follow.
+    """
+    sides = {}
+    for mode in ["flat", "tree"]:
+        found = retrieve.search(question, mode=mode, hybrid=hybrid, top_k=top_k,
+                                dedupe=dedupe, corpus_id=corpus_id)
+        sides[mode] = found
+        yield "meta", {"side": mode, "hits": found["hits"], "trace": found["trace"],
+                       "provider": answer_provider or llm.provider()}
+
+    shared = set(sides["flat"]["trace"]["retrieved_ids"]) & set(
+        sides["tree"]["trace"]["retrieved_ids"])
+    yield "retrieval_done", {"shared_count": len(shared), "shared_nodes": sorted(shared)}
+
+    for mode in ["flat", "tree"]:
+        hits = sides[mode]["hits"]
+        if len(hits) == 0:
+            yield "text", {"side": mode, "text": "Nothing was retrieved."}
+            continue
+        prompt = build_prompt(question, hits)
+        collected = ""
+        for piece in llm.stream_complete(prompt, system=ANSWER_SYSTEM,
+                                         max_tokens=config.ANSWER_MAX_TOKENS,
+                                         temperature=0.0, use_provider=answer_provider):
+            collected = collected + piece
+            yield "text", {"side": mode, "text": piece}
+        yield "side_done", {"side": mode, "citations": check_citations(collected, hits)}

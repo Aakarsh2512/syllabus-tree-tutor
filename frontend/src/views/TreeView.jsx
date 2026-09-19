@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getNode, getTree } from "../api.js";
 import TreeMap from "../components/TreeMap.jsx";
 
-export default function TreeView({ highlightIds }) {
+export default function TreeView({ highlightIds, corpusId }) {
   const [nodes, setNodes] = useState([]);
   const [stats, setStats] = useState(null);
   const [selectedId, setSelectedId] = useState("");
@@ -11,20 +11,24 @@ export default function TreeView({ highlightIds }) {
   const [error, setError] = useState("");
 
   useEffect(function () {
-    getTree()
+    setNodes([]);
+    setSelectedId("");
+    setDetail(null);
+    getTree(corpusId)
       .then(function (payload) {
         setNodes(payload.nodes);
         setStats(payload.stats);
+        setError("");
       })
       .catch(function (problem) {
         setError(problem.message);
       });
-  }, []);
+  }, [corpusId]);
 
   function select(nodeId) {
     setSelectedId(nodeId);
     setDetail(null);
-    getNode(nodeId)
+    getNode(nodeId, corpusId)
       .then(setDetail)
       .catch(function (problem) {
         setError(problem.message);
