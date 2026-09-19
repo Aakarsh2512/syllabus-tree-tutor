@@ -115,6 +115,38 @@ Or `LLM_PROVIDER=anthropic` with `ANTHROPIC_API_KEY`, or `openai` with
 `OPENAI_API_KEY`. Expect minutes per summary on a CPU — the 192-chunk demo
 corpus took **57 minutes** with `llama3.2:3b`, against 92 seconds extractive.
 
+## Deploy
+
+The whole app runs as **one container on one port**: FastAPI serves the API and
+the built React app together. The [`Dockerfile`](Dockerfile) builds the
+frontend, installs CPU-only PyTorch (the default Linux wheel carries CUDA and is
+gigabytes larger), downloads the embedding model at build time so the running
+app never needs the network, and builds the demo tree before the first visitor
+arrives.
+
+It targets **Hugging Face Spaces** (Docker SDK, free, 16 GB RAM):
+
+```bash
+pip install huggingface_hub
+hf auth login                          # a token with WRITE access
+python scripts/deploy_space.py         # creates <you>/syllabus-tree-tutor and uploads
+```
+
+Or anywhere with Docker:
+
+```bash
+docker build -t syllabus-tree-tutor .
+docker run -p 7860:7860 syllabus-tree-tutor
+```
+
+The public build uses `LLM_PROVIDER=offline`, because a free host cannot run a
+local model at a usable speed. **Retrieval is unaffected** — the comparison is
+exact — but answers are extractive, and the page says so up front. Set
+`LLM_PROVIDER=anthropic` and `ANTHROPIC_API_KEY` as Space secrets for written
+answers. The demo corpus is two of my own study guides (on RAG and on
+transformers), in [`deploy/demo/`](deploy/demo); uploads are capped at 3 PDFs /
+15 MB and cleared when the Space restarts.
+
 ## Results
 
 The evaluation set is 26 hand-written questions over the demo corpus (5 PDFs,
@@ -192,7 +224,7 @@ One v2 question (`b02`) is deliberately a **counter-case**: no summary mentions
 `DSTWU`, `RadFrac` or `decanter`, so the tree should and does lose it (0.40
 against the baseline's 0.80).
 
-### Two bugs found by measuring rather than looking
+### Bugs found by measuring rather than looking
 
 - **A silent 300-second timeout.** One summary in the 57-minute build fell back
   to extractive text because its Ollama call timed out, and the original code
@@ -203,6 +235,39 @@ against the baseline's 0.80).
   Genuine summaries share 40–65 characters; two nodes shared **471** and **217**
   — they had copied one child nearly verbatim, making the top of the tree
   worthless. Fixed with a separate prompt for summarising summaries.
+
+Preparing the public build turned up four more, all on the no-model path,
+and all invisible until the demo showed flat and tree returning **identical**
+results for "what does this cover overall?":
+
+- **Page footers inside every chunk.** A running footer ("Placement Track ·
+  Phase 4 · RAG Done Properly") sat in every chunk of the study guides, adding
+  noise to every embedding. Ingest now drops any line of 12+ characters that
+  repeats on at least half the pages. On the course PDFs it correctly finds
+  nothing but bare page numbers, so recurring headings like "Step 1" survive.
+- **Extractive summaries that were not summaries.** The "most central
+  sentence" method picked that footer as the most representative line of each
+  document — because it appears everywhere — plus duplicated sentences from
+  chunk overlap, plus code. For a broad question the summaries ranked **29th,
+  61st and 75th**. Removing furniture, duplicates and code, and leading each
+  summary with its key terms ("Covers: chunk, evaluation, tokens…"), moved them
+  to **1st, 2nd and 4th**.
+- **Refusing broad questions.** The extractive answerer refused whenever no
+  sentence shared a word with the question — and broad questions share words
+  with nothing. It now refuses on retrieval confidence instead, and cites the
+  passage behind every sentence it returns.
+- **Chunks opening mid-word** ("pensive or slow…"), because overlap copied the
+  last 150 characters regardless of word boundaries.
+
+One measurement from that work is worth knowing on its own: **retrieval
+confidence cannot tell answerable questions from unanswerable ones.** On the
+demo, "What is the attendance policy?" — not in the documents — scores 0.337,
+above the perfectly answerable "What does this cover overall?" at 0.245. The
+no-model threshold (0.20) catches most unanswerable questions but not that one.
+A language model's judgment is what achieves the 1.000 refusal rate.
+
+The evaluation numbers above were measured on an index built before these
+ingest fixes; on that corpus the footer fix removes only bare page numbers.
 
 **Known issue: broad answers often lose their citations.** When the tree answers
 from summary nodes, the model frequently returns no `[n]` markers at all, while
@@ -271,7 +336,8 @@ The frontend has **no UI or charting dependencies** — the tree is hand-drawn S
 - [ ] Strip the echoed instruction from upper-level summaries and feed them topic lists
 - [ ] Cross-encoder reranker over the top 50 candidates
 - [ ] Index-time deduplication, so near-identical documents collapse before chunking
-- [ ] Dockerfile and a deployed demo link
+- [x] Dockerfile, single-port serving, Hugging Face Space deploy script
+- [ ] Publish the Space and link it here
 - [ ] Per-corpus evaluation, so an uploaded PDF can be scored the same way
 - [ ] Measure citation rate per mode, and prompt summaries to carry their sources
 

@@ -201,6 +201,7 @@ export default function CompareView({ corpusId, corpusName, llm, initialQuestion
             <strong>{topK}</strong>
           </label>
 
+          {llm && llm.provider !== "offline" && (
           <label className="check">
             <input
               type="checkbox"
@@ -211,6 +212,7 @@ export default function CompareView({ corpusId, corpusName, llm, initialQuestion
             />
             fast answers (no model)
           </label>
+          )}
 
           <span className="note">
             {slow

@@ -1,0 +1,17 @@
+.git
+.env
+.venv
+**/__pycache__
+**/*.pyc
+
+# built inside the image instead
+frontend/node_modules
+frontend/dist
+
+# never ship local documents or indexes
+data/
+
+# not needed at runtime
+docs/
+*.md
+!deploy/space/README.md

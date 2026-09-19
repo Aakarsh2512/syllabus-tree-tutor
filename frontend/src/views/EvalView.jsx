@@ -9,7 +9,7 @@ const METRICS = [
   { key: "refusal_rate", label: "Refusal rate", hint: "declined to answer when the corpus cannot" },
 ];
 
-export default function EvalView() {
+export default function EvalView({ demoCorpus }) {
   const [payload, setPayload] = useState(null);
   const [error, setError] = useState("");
 
@@ -50,9 +50,24 @@ export default function EvalView() {
 
   const results = payload.results;
   const counts = results.runs[0].metrics.counts;
+  // On a public deployment the evaluation corpus (private course material)
+  // is not the demo that is loaded, so say so rather than imply it is.
+  const differentCorpus =
+    demoCorpus && demoCorpus.stats && results.index.stats &&
+    demoCorpus.stats.nodes !== results.index.stats.nodes;
 
   return (
     <div>
+      {differentCorpus && (
+        <div className="panel notice">
+          <p className="note">
+            These results come from the evaluation corpus described below, which is
+            private course material and is <strong>not</strong> the demo loaded on
+            this server. They are shown as recorded.
+          </p>
+        </div>
+      )}
+
       <div className="panel">
         <p className="panel-title">How this was measured</p>
         <p className="note">

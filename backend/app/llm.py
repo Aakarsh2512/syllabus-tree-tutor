@@ -55,19 +55,91 @@ def split_sentences(text: str) -> list[str]:
     return sentences
 
 
+def looks_like_code(sentence: str) -> bool:
+    """Code and formulas make poor summary sentences: they say what, not about what."""
+    stripped = sentence.strip()
+    for prefix in ["#", "def ", "import ", "from ", "class ", "return ", ">>>", "$ "]:
+        if stripped.startswith(prefix):
+            return True
+    symbols = 0
+    for character in stripped:
+        if character in "=(){}[]<>_;|\\":
+            symbols = symbols + 1
+    return symbols > 0.08 * max(1, len(stripped))
+
+
+def unique_prose_sentences(text: str, skip_covers: bool = True) -> list[str]:
+    """Sentences in order, without repeats and without code.
+
+    Chunk overlap puts the same sentence into two neighbouring chunks, so a
+    cluster's text contains duplicates; without this the summary can quote
+    the same line twice.
+    """
+    seen = set()
+    kept = []
+    for sentence in split_sentences(text):
+        key = re.sub(r"\s+", " ", sentence).strip().lower()
+        if key in seen or looks_like_code(sentence):
+            continue
+        # A child summary's own "Covers: ..." line; the parent writes a fresh one.
+        if skip_covers and key.startswith("covers:"):
+            continue
+        seen.add(key)
+        kept.append(sentence)
+    return kept
+
+
+def key_terms(sentences: list[str], count: int = 8) -> list[str]:
+    """The terms that carry the most weight across these sentences."""
+    vectorizer = TfidfVectorizer(stop_words="english", ngram_range=(1, 2),
+                                 token_pattern=r"(?u)\b[A-Za-z][A-Za-z-]{2,}\b")
+    try:
+        matrix = vectorizer.fit_transform(sentences)
+    except ValueError:
+        return []
+    weights = np.asarray(matrix.sum(axis=0)).ravel()
+    names = vectorizer.get_feature_names_out()
+    order = np.argsort(weights)[::-1]
+
+    terms = []
+    for position in order:
+        term = names[position]
+        # Skip a word already covered by a chosen phrase, and the reverse.
+        overlaps = False
+        for chosen in terms:
+            if term in chosen or chosen in term:
+                overlaps = True
+                break
+        if not overlaps:
+            terms.append(term)
+        if len(terms) >= count:
+            break
+    return terms
+
+
 def extractive_summary(text: str, max_sentences: int = 6) -> str:
-    """Pick the sentences closest to the average meaning of the whole text."""
-    sentences = split_sentences(text)
+    """A summary made only of the text's own words, with no model.
+
+    Starts with the cluster's key terms, which is what makes the node match a
+    broad question like "what does this cover?", then the sentences closest to
+    the cluster's average meaning. Page furniture, repeated sentences and code
+    are excluded, since each of those is "central" for the wrong reason.
+    """
+    sentences = unique_prose_sentences(text)
     if len(sentences) == 0:
         return text[:600].strip()
+
+    terms = key_terms(sentences)
+    header = ("Covers: " + ", ".join(terms) + ". ") if len(terms) > 0 else ""
+
     if len(sentences) <= max_sentences:
-        return " ".join(sentences)
+        return header + " ".join(sentences)
 
     vectorizer = TfidfVectorizer(stop_words="english")
     try:
         matrix = vectorizer.fit_transform(sentences)
     except ValueError:
-        return " ".join(sentences[:max_sentences])
+        return header + " ".join(sentences[:max_sentences])
 
     centroid = np.asarray(matrix.mean(axis=0))
     scores = (matrix @ centroid.T).ravel()
@@ -78,51 +150,86 @@ def extractive_summary(text: str, max_sentences: int = 6) -> str:
     picked = []
     for position in chosen:
         picked.append(sentences[position])
-    return " ".join(picked)
+    return header + " ".join(picked)
 
 
-def offline_answer(prompt: str) -> str:
-    """A readable answer with no model: the most relevant lines of the context.
+REFUSAL = "I could not find this in the provided documents."
 
-    The prompt we build always puts the passages between CONTEXT: and QUESTION:,
-    so we can pull them back out and rank their sentences against the question.
+
+def parse_passages(prompt: str) -> tuple[list[tuple], str]:
+    """Recover (rank, text) for each passage, and the question, from a prompt
+    built by generate.build_prompt."""
+    if "CONTEXT:" not in prompt or "QUESTION:" not in prompt:
+        return [], ""
+    after_context = prompt.split("CONTEXT:", 1)[1]
+    context, question = after_context.split("QUESTION:", 1)
+
+    passages = []
+    for block in context.split("\n\n---\n\n"):
+        block = block.strip()
+        if block == "":
+            continue
+        parts = block.split("\n", 1)
+        header = parts[0]
+        body = parts[1] if len(parts) > 1 else ""
+        match = re.match(r"\[(\d+)\]", header)
+        rank = int(match.group(1)) if match else len(passages) + 1
+        passages.append((rank, body))
+    return passages, question.strip()
+
+
+def offline_answer(prompt: str, retrieval_score: float = None) -> str:
+    """An answer with no model, built only from the retrieved passages.
+
+    1. Refuse when retrieval found nothing convincing (see OFFLINE_MIN_SCORE).
+    2. If sentences share words with the question, show the best of them,
+       each tagged with the passage it came from, so the answer is cited.
+    3. If none do - typical for broad questions like "what does this cover?",
+       which share no vocabulary with any sentence - say so, and show how the
+       closest passages begin. For a summary node that is its "Covers:" line,
+       which is exactly what a broad question is asking for.
     """
-    context = prompt
-    question = ""
-    if "CONTEXT:" in prompt and "QUESTION:" in prompt:
-        after_context = prompt.split("CONTEXT:", 1)[1]
-        context, question = after_context.split("QUESTION:", 1)
+    passages, question = parse_passages(prompt)
+    if len(passages) == 0:
+        return REFUSAL
+    if retrieval_score is not None and retrieval_score < config.OFFLINE_MIN_SCORE:
+        return REFUSAL
 
-    sentences = split_sentences(context)
-    if len(sentences) == 0:
-        return "I could not find this in the provided documents."
+    tagged = []
+    for rank, body in passages:
+        for sentence in unique_prose_sentences(body, skip_covers=False):
+            tagged.append((rank, sentence))
+    if len(tagged) == 0:
+        return REFUSAL
 
-    question = question.strip()
-    if question == "":
-        return extractive_summary(context, max_sentences=5)
+    if question != "":
+        sentences = []
+        for rank, sentence in tagged:
+            sentences.append(sentence)
+        vectorizer = TfidfVectorizer(stop_words="english")
+        try:
+            matrix = vectorizer.fit_transform(sentences + [question])
+            scores = (matrix[:-1] @ matrix[-1].T).toarray().ravel()
+        except ValueError:
+            scores = np.zeros(len(sentences))
 
-    vectorizer = TfidfVectorizer(stop_words="english")
-    try:
-        matrix = vectorizer.fit_transform(sentences + [question])
-    except ValueError:
-        return extractive_summary(context, max_sentences=5)
+        if float(scores.max()) > 0.0:
+            best = np.argsort(scores)[::-1][:5]
+            chosen = sorted(best.tolist())
+            lines = ["The most relevant sentences (extractive, no language model):"]
+            for position in chosen:
+                if scores[position] <= 0.0:
+                    continue
+                rank, sentence = tagged[position]
+                lines.append("- " + sentence + " [" + str(rank) + "]")
+            return "\n".join(lines)
 
-    question_vector = matrix[-1]
-    sentence_matrix = matrix[:-1]
-    scores = (sentence_matrix @ question_vector.T).toarray().ravel()
-
-    if float(scores.max()) <= 0.0:
-        return "I could not find this in the provided documents."
-
-    best_positions = np.argsort(scores)[::-1][:5]
-    chosen = sorted(best_positions.tolist())
-
-    lines = ["Based on the retrieved passages (extractive mode, no language model):"]
-    for position in chosen:
-        lines.append("- " + sentences[position])
-    lines.append(
-        "\nSet LLM_PROVIDER to ollama, anthropic or openai in .env for a written answer."
-    )
+    lines = ["No sentence shares your wording, so here is how the closest passages "
+             "begin (extractive, no language model):"]
+    for rank, body in passages[:3]:
+        opening = unique_prose_sentences(body, skip_covers=False)
+        if len(opening) > 0:
+            lines.append("- " + " ".join(opening[:2]) + " [" + str(rank) + "]")
     return "\n".join(lines)
 
 
@@ -252,7 +359,8 @@ def provider() -> str:
 
 
 def complete(prompt: str, system: str = "", max_tokens: int = 700,
-             temperature: float = 0.0, use_provider: str = None) -> str:
+             temperature: float = 0.0, use_provider: str = None,
+             retrieval_score: float = None) -> str:
     name = use_provider if use_provider is not None else provider()
     if name == "ollama":
         return ollama_complete(prompt, system, max_tokens, temperature)
@@ -260,11 +368,12 @@ def complete(prompt: str, system: str = "", max_tokens: int = 700,
         return anthropic_complete(prompt, system, max_tokens, temperature)
     if name == "openai":
         return openai_complete(prompt, system, max_tokens, temperature)
-    return offline_answer(prompt)
+    return offline_answer(prompt, retrieval_score)
 
 
 def stream_complete(prompt: str, system: str = "", max_tokens: int = 700,
-                    temperature: float = 0.0, use_provider: str = None):
+                    temperature: float = 0.0, use_provider: str = None,
+                    retrieval_score: float = None):
     name = use_provider if use_provider is not None else provider()
     try:
         if name == "ollama":
@@ -283,7 +392,7 @@ def stream_complete(prompt: str, system: str = "", max_tokens: int = 700,
         yield "[" + name + " unavailable: " + str(error) + "] falling back to extractive mode.\n\n"
 
     # offline, or a provider that failed
-    for word in offline_answer(prompt).split(" "):
+    for word in offline_answer(prompt, retrieval_score).split(" "):
         yield word + " "
 
 

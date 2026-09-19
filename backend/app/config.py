@@ -13,13 +13,19 @@ load_dotenv()
 
 # backend/app/config.py -> parents[2] is the project root
 ROOT = Path(__file__).resolve().parents[2]
-RAW_DIR = ROOT / "data" / "raw"
-INDEX_DIR = ROOT / "data" / "index"
+# Everything the app writes lives under DATA_DIR. A deployment, or a local
+# test that must not touch the real index, points it somewhere else.
+DATA_DIR = Path(os.getenv("DATA_DIR", str(ROOT / "data")))
+RAW_DIR = DATA_DIR / "raw"
+INDEX_DIR = DATA_DIR / "index"
 EVAL_DIR = ROOT / "eval"
 # One folder per uploaded corpus, so uploads never overwrite each other
 # or the demo index.
-CORPORA_DIR = ROOT / "data" / "corpora"
+CORPORA_DIR = DATA_DIR / "corpora"
 DEMO_CORPUS_ID = "demo"
+DEMO_CORPUS_NAME = os.getenv("DEMO_CORPUS_NAME", "Demo: course material")
+# Where the built React app is, when FastAPI serves it itself.
+FRONTEND_DIST = ROOT / "frontend" / "dist"
 
 NODES_PATH = INDEX_DIR / "nodes.json"
 EMBEDDINGS_PATH = INDEX_DIR / "embeddings.npy"
@@ -69,6 +75,12 @@ SUMMARY_PENALTY = float(os.getenv("SUMMARY_PENALTY", "0.0"))
 MAX_CONTEXT_CHARS = int(os.getenv("MAX_CONTEXT_CHARS", "9000"))
 # Shorter answers matter on a CPU model: generation is the slow part.
 ANSWER_MAX_TOKENS = int(os.getenv("ANSWER_MAX_TOKENS", "500"))
+# With no language model, refuse when the best retrieved passage scores below
+# this. It is a weak signal: measured on the demo, an unanswerable question
+# ("attendance policy", 0.337) outscored an answerable one ("what does this
+# cover", 0.245), so no threshold separates them cleanly. 0.20 keeps every
+# answerable question tested and refuses most, but not all, unanswerable ones.
+OFFLINE_MIN_SCORE = float(os.getenv("OFFLINE_MIN_SCORE", "0.20"))
 
 
 MAX_UPLOAD_BYTES = int(os.getenv("MAX_UPLOAD_BYTES", str(40 * 1024 * 1024)))

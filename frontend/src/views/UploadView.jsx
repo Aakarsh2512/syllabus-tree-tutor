@@ -4,7 +4,8 @@ import { getJob, uploadCorpus } from "../api.js";
 
 // Drop a PDF, watch its tree get built, then go and ask it questions.
 
-export default function UploadView({ onReady, llm }) {
+export default function UploadView({ onReady, llm, limits }) {
+  const noModel = !llm || llm.provider === "offline";
   const [files, setFiles] = useState([]);
   const [name, setName] = useState("");
   const [fast, setFast] = useState(true);
@@ -156,6 +157,8 @@ export default function UploadView({ onReady, llm }) {
             </button>
             <button
               data-active={fast === false}
+              disabled={noModel}
+              title={noModel ? "No language model is configured on this server" : ""}
               onClick={function () {
                 setFast(false);
               }}
@@ -176,6 +179,14 @@ export default function UploadView({ onReady, llm }) {
               (llm ? llm.provider : "the configured provider") +
               ". Better, but minutes per summary on a CPU."}
         </p>
+
+        {limits && (
+          <p className="note">
+            Up to {limits.max_upload_files} PDFs, {limits.max_upload_mb} MB in total. Uploads are
+            not private: anyone using this server can select them, and they are cleared when
+            it restarts.
+          </p>
+        )}
 
         {error !== "" && <p className="error">{error}</p>}
       </div>

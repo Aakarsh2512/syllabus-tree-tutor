@@ -74,6 +74,10 @@ def require_index(corpus_id: str | None):
 def health():
     payload = {
         "llm": llm.health(),
+        "limits": {
+            "max_upload_mb": config.MAX_UPLOAD_BYTES // (1024 * 1024),
+            "max_upload_files": config.MAX_UPLOAD_FILES,
+        },
         "corpora": store.list_corpora(),
         "index": {"exists": store.index_exists(None)},
     }
@@ -274,3 +278,30 @@ def get_eval():
         return {"exists": False, "detail": "Run: python eval/run_eval.py"}
     with open(path, "r", encoding="utf-8") as handle:
         return {"exists": True, "results": json.load(handle)}
+
+
+
+# ------------------------------------------------------------------ frontend --
+# In production the built React app is served from here, so the whole project
+# runs as one process on one port. In development Vite serves it instead.
+
+if (config.FRONTEND_DIST / "index.html").exists():
+    from fastapi.responses import FileResponse
+    from fastapi.staticfiles import StaticFiles
+
+    app.mount(
+        "/assets",
+        StaticFiles(directory=config.FRONTEND_DIST / "assets"),
+        name="assets",
+    )
+
+    @app.get("/{path:path}", include_in_schema=False)
+    def frontend(path: str):
+        if path.startswith("api/"):
+            raise HTTPException(status_code=404, detail="Unknown API route")
+        dist = config.FRONTEND_DIST.resolve()
+        candidate = (dist / path).resolve()
+        # Only files inside dist may be served; anything else gets the app.
+        if path != "" and candidate.is_file() and dist in candidate.parents:
+            return FileResponse(candidate)
+        return FileResponse(dist / "index.html")

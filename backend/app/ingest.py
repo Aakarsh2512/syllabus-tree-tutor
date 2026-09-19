@@ -25,6 +25,52 @@ def clean_text(text: str) -> str:
     return "\n".join(lines).strip()
 
 
+def furniture_key(line: str) -> str:
+    """A line with digits removed, so "Page 3" and "Page 4" compare as equal."""
+    return re.sub(r"\s+", " ", re.sub(r"\d+", "", line)).strip().lower()
+
+
+def strip_page_furniture(pages: list[dict]) -> tuple[list[dict], int]:
+    """Remove running headers, footers and bare page numbers.
+
+    A line that appears on at least half the pages (and on three or more) is
+    page furniture, not content. Left in, it sits inside every chunk, and the
+    extractive summarizer picks it as the most "representative" sentence of
+    the whole document precisely because it is everywhere. Short lines are
+    never treated as furniture, so a heading like "Step 1" or "Given:" that
+    happens to recur is kept.
+    """
+    if len(pages) < 3:
+        return pages, 0
+
+    pages_containing = {}
+    for page in pages:
+        seen = set()
+        for line in page["text"].split("\n"):
+            key = furniture_key(line)
+            if len(key) >= 12 and key not in seen:
+                seen.add(key)
+                pages_containing[key] = pages_containing.get(key, 0) + 1
+
+    threshold = max(3, len(pages) // 2)
+    repeated = set()
+    for key, count in pages_containing.items():
+        if count >= threshold:
+            repeated.add(key)
+
+    cleaned = []
+    for page in pages:
+        kept = []
+        for line in page["text"].split("\n"):
+            if furniture_key(line) in repeated:
+                continue
+            if re.fullmatch(r"\s*\d{1,4}\s*", line):
+                continue
+            kept.append(line)
+        cleaned.append({"page": page["page"], "text": "\n".join(kept).strip()})
+    return cleaned, len(repeated)
+
+
 def load_pdf_pages(path: Path) -> list[dict]:
     reader = PdfReader(str(path))
     pages = []
@@ -33,6 +79,7 @@ def load_pdf_pages(path: Path) -> list[dict]:
         raw = page.extract_text() or ""
         pages.append({"page": page_number, "text": clean_text(raw)})
         page_number = page_number + 1
+    pages, _ = strip_page_furniture(pages)
     return pages
 
 
@@ -86,6 +133,11 @@ def add_overlap(chunks: list[str], overlap: int) -> list[str]:
     position = 1
     while position < len(chunks):
         tail = chunks[position - 1][-overlap:]
+        # Start the overlap at a word boundary, so no chunk opens mid-word
+        # ("pensive or slow..." instead of "expensive or slow...").
+        first_space = tail.find(" ")
+        if 0 <= first_space < len(tail) - 1:
+            tail = tail[first_space + 1:]
         joined.append(tail + " " + chunks[position])
         position = position + 1
     return joined

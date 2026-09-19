@@ -87,6 +87,12 @@ export default function App() {
   }
 
   const llm = health ? health.llm : null;
+  let demoCorpus = null;
+  for (const corpus of corpora) {
+    if (corpus.corpus_id === "demo") {
+      demoCorpus = corpus;
+    }
+  }
   let current = null;
   for (const corpus of corpora) {
     if (corpus.corpus_id === corpusId) {
@@ -164,7 +170,32 @@ export default function App() {
           </div>
         )}
 
-        {tab === "upload" && <UploadView onReady={onCorpusReady} llm={llm} />}
+        {llm && llm.provider === "offline" && tab !== "eval" && (
+          <div className="panel notice">
+            <p className="note">
+              <strong>This server has no language model</strong>, so answers are
+              extractive: the most relevant sentences, not written prose. The
+              retrieval comparison is the real thing and runs at full quality.
+              See the{" "}
+              <a
+                href="https://github.com/Aakarsh2512/syllabus-tree-tutor"
+                target="_blank"
+                rel="noreferrer"
+              >
+                project README
+              </a>{" "}
+              for model-written answers.
+            </p>
+          </div>
+        )}
+
+        {tab === "upload" && (
+          <UploadView
+            onReady={onCorpusReady}
+            llm={llm}
+            limits={health ? health.limits : null}
+          />
+        )}
         {tab === "compare" && (
           <CompareView
             corpusId={corpusId}
@@ -183,7 +214,7 @@ export default function App() {
           />
         )}
         {tab === "tree" && <TreeView highlightIds={highlightIds} corpusId={corpusId} />}
-        {tab === "eval" && <EvalView />}
+        {tab === "eval" && <EvalView demoCorpus={demoCorpus} />}
       </main>
     </div>
   );

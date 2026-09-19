@@ -721,3 +721,19 @@ input[type="range"] {
   accent-color: var(--accent);
   vertical-align: middle;
 }
+
+.panel.notice {
+  border-left: 3px solid var(--summary);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+.panel.notice a {
+  color: var(--accent);
+}
+
+.seg button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

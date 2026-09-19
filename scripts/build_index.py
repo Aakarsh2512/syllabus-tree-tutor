@@ -55,6 +55,7 @@ def main() -> None:
 
     stats = tree.tree_stats(nodes)
     meta = {
+        "name": config.DEMO_CORPUS_NAME,
         "documents": len(pdfs),
         "document_names": [path.name for path in pdfs],
         "leaf_chunks": len(leaves),

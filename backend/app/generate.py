@@ -42,6 +42,15 @@ def build_prompt(question: str, hits: list[dict]) -> str:
     return "CONTEXT:\n" + context + "\n\nQUESTION: " + question
 
 
+def best_score(hits: list[dict]) -> float:
+    """The strongest retrieval score, used to decide whether to refuse."""
+    best = 0.0
+    for hit in hits:
+        if hit["score"] > best:
+            best = hit["score"]
+    return best
+
+
 def check_citations(answer: str, hits: list[dict]) -> dict:
     """Do the [n] markers in the answer point at passages we actually sent?"""
     cited = set()
@@ -80,7 +89,8 @@ def answer(question: str, mode: str = "tree", hybrid: bool = False, top_k: int =
 
     prompt = build_prompt(question, hits)
     text = llm.complete(prompt, system=ANSWER_SYSTEM, max_tokens=config.ANSWER_MAX_TOKENS,
-                        temperature=0.0, use_provider=answer_provider)
+                        temperature=0.0, use_provider=answer_provider,
+                        retrieval_score=best_score(hits))
 
     return {
         "question": question,
@@ -111,7 +121,8 @@ def answer_stream(question: str, mode: str = "tree", hybrid: bool = False, top_k
     collected = ""
     for piece in llm.stream_complete(prompt, system=ANSWER_SYSTEM,
                                      max_tokens=config.ANSWER_MAX_TOKENS,
-                                     temperature=0.0, use_provider=answer_provider):
+                                     temperature=0.0, use_provider=answer_provider,
+                                     retrieval_score=best_score(hits)):
         collected = collected + piece
         yield "text", {"text": piece}
 
@@ -165,7 +176,8 @@ def compare_stream(question: str, hybrid: bool = False, top_k: int = None,
         collected = ""
         for piece in llm.stream_complete(prompt, system=ANSWER_SYSTEM,
                                          max_tokens=config.ANSWER_MAX_TOKENS,
-                                         temperature=0.0, use_provider=answer_provider):
+                                         temperature=0.0, use_provider=answer_provider,
+                                         retrieval_score=best_score(hits)):
             collected = collected + piece
             yield "text", {"side": mode, "text": piece}
         yield "side_done", {"side": mode, "citations": check_citations(collected, hits)}
