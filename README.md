@@ -14,10 +14,19 @@ a summary that already spans a hundred chunks.
 
 ![Flat chunks versus the RAPTOR tree, side by side](docs/compare.png)
 
-Above: one question, both retrievers, on the same index. The baseline spends all
-six slots on chunks and answers with fragments. The tree spends three slots on
-summaries covering 200, 63 and 31 chunks — scoring 0.299 against the baseline's
-best of 0.145 — and answers with the actual shape of the corpus.
+Above: one question, both retrievers, one index, answers written by
+`llama3.2:3b` running locally.
+
+The **baseline** spends all six slots on chunks, and its answer simply replays
+the Q&A fragments it retrieved — it never answers "what topics does this cover".
+The **tree** spends three slots on summaries covering 200, 63 and 31 chunks
+(scoring 0.299 against the baseline's best of 0.145) and produces an actual
+topic outline — including the transformers and DC machines material that the
+baseline missed completely, because none of its six chunks mentioned it.
+
+Note the weakness on show too: the tree's answer cites nothing, while the
+baseline cites five passages. Broad answers built from summaries are harder to
+ground, and that is an open problem here, not a solved one.
 
 ## Drop in any PDF and try it
 
@@ -195,6 +204,12 @@ against the baseline's 0.80).
   — they had copied one child nearly verbatim, making the top of the tree
   worthless. Fixed with a separate prompt for summarising summaries.
 
+**Known issue: broad answers often lose their citations.** When the tree answers
+from summary nodes, the model frequently returns no `[n]` markers at all, while
+the baseline answering from chunks cites reliably. A summary is one step removed
+from the source, so there is less for the model to point at. Citation rate per
+mode is not yet measured, and should be.
+
 **Known issue:** after that fix, `S2-007` and `S3-010` still share 187 and 203
 characters with their children. Better than 471 and 217, still over the line.
 Both now begin by echoing the instruction ("Here is a 150-word overview…"), which
@@ -258,3 +273,7 @@ The frontend has **no UI or charting dependencies** — the tree is hand-drawn S
 - [ ] Index-time deduplication, so near-identical documents collapse before chunking
 - [ ] Dockerfile and a deployed demo link
 - [ ] Per-corpus evaluation, so an uploaded PDF can be scored the same way
+- [ ] Measure citation rate per mode, and prompt summaries to carry their sources
+
+Screenshots in `docs/` are regenerated with `node frontend/shoot.mjs "<url>" "<out.png>"`,
+which drives the installed Edge and waits for both answers to finish streaming.
